@@ -17,10 +17,7 @@ return [
     "btn_text_hover_color" => "#fff7f7",
     "nav_active_color" => "#10B981",
     "nav_hover_color" => "#F59E0B",
-    "nav_bg_color" => "rgba(35, 40, 49, 0.76)",
     "text_color" => "#e3e3e3",
-    "card_color" => "rgba(35, 40, 49, 0.76)",
-    "card_in_card_color" => "rgba(28, 31, 35, 0.76)",
     "footer_bg_color" => "#1a1a23",
     "input_bg_color" => "#474a56",
     "input_text_color" => "#ffffff",
@@ -28,7 +25,6 @@ return [
     "link_color" => "#6060be",
     "hover_link_color" => "#ffffff",
     "logo_width" => "15",
-
     "overlay_everywhere" => "1",
     "overlay_blur" => "5",
     "overlay_img" => "Config/Default/Img/bg.webp",
@@ -39,7 +35,18 @@ return [
     "home_btn_color" => "#0bb7f5",
     "home_btn_hover_color" => "#1cc1ff",
     "home_btn_text_color" => "#ffffff",
-    "home_join_width" => "50",
+    "card_color_r" => "35",
+    "card_color_g" => "40",
+    "card_color_b" => "49",
+    "card_color_a" => "0.76",
+    "card_in_card_color_r" => "28",
+    "card_in_card_color_g" => "31",
+    "card_in_card_color_b" => "35",
+    "card_in_card_color_a" => "0.76",
+    "nav_bg_color_r" => "35",
+    "nav_bg_color_g" => "40",
+    "nav_bg_color_b" => "49",
+    "nav_bg_color_a" => "0.76",
 
     /* - - - - - - - - 
        - - HOME - -
@@ -53,9 +60,12 @@ return [
     "home_title" => "Accueil",
     /*NEWS SECTION*/
     "news_section_active" => "1",
+    "news_section_title" => "Derniers articles",
+    "news_section_desc" => "Retrouvez ci-dessous les dernières actualités et mises à jour !",
     "news_number_display" => "3",
     /*JOIN SECTION*/
     "join_section_active" => "1",
+    "home_join_width" => "50",
     "join_section_img" => "Config/Default/Img/discord.png",
     "join_section_title" => "Rejoingnez NightCraft !",
     "join_section_text" => "Plongez dans Nightcraft, un monde Minecraft unique où l'aventure et la créativité n'ont pas de limites! Rejoignez-nous pour des constructions époustouflantes et des quêtes inoubliables. ✨",

@@ -56,10 +56,10 @@ Website::setDescription(Website::getWebsiteDescription());
 <section class="mb-8 px-8 md:px-36 2xl:px-96">
     <div style="background-color: var(--card-bg-color)" class="p-6 rounded-xl">
         <div class="flex justify-between items-center">
-            <h4>Derniers articles</h4>
+            <h4><?= ThemeModel::getInstance()->fetchConfigValue('news_section_title') ?></h4>
             <a href="<?= EnvManager::getInstance()->getValue("PATH_SUBFOLDER") ?>news" class="btn">Voir plus d'articles</a>
         </div>
-        <p>Retrouvez ci-dessous les dernières actualités et mises à jour !</p>
+        <p><?= ThemeModel::getInstance()->fetchConfigValue('news_section_desc') ?></p>
         <div class="lg:grid grid-cols-3 gap-6">
             <?php foreach ($newsList as $news): ?>
             <div style="background-color: var(--card-in-card-bg-color)" class="p-4 rounded-2xl flex flex-col zoomable-image">
