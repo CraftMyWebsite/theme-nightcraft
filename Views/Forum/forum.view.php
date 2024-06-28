@@ -127,7 +127,6 @@ Website::setDescription("Consultez les sujets de discussion et répondez aux que
                         <?php endif; ?>
                         <?php endforeach; ?>
                     </div>
-                </div>
             <?php endif ?>
 
             <div style="background: var(--card-bg-color);" class="p-4 rounded-lg h-fit">
