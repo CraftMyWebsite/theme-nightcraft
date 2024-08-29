@@ -1,5 +1,6 @@
 
 <?php use CMW\Controller\Core\CoreController;
+use CMW\Controller\Core\PackageController;
 use CMW\Manager\Env\EnvManager;
 use CMW\Manager\Security\SecurityManager;
 use CMW\Manager\Views\View;
@@ -14,7 +15,7 @@ use CMW\Utils\Website;
 
 <footer style="background-color: var(--footer-bg-color)"  class="mt-auto px-8 md:px-36 2xl:px-96">
     <div class="pt-8 pb-1">
-        <div class="flex justify-between">
+        <div class="md:flex justify-between">
             <div class="space-y-6">
                 <div>
                     <h3><?= Website::getWebsiteName() ?></h3>
@@ -48,7 +49,8 @@ use CMW\Utils\Website;
                     </div>
                 </div>
             </div>
-            <div>
+            <div class="mt-4">
+                <?php if (PackageController::isInstalled("Newsletter")): ?>
                 <form action="<?= EnvManager::getInstance()->getValue("PATH_SUBFOLDER") ?>newsletter" method="post">
                     <?php (new SecurityManager())->insertHiddenToken() ?>
                     <label for="mail">NewsLetter :</label>
@@ -57,6 +59,7 @@ use CMW\Utils\Website;
                         <button class="input-btn" type="submit">M'inscrire</button>
                     </div>
                 </form>
+                <?php endif; ?>
                 <?php if(ThemeModel::getInstance()->fetchConfigValue('footer_active_condition')): ?>
                         <a class="mt-4" href="<?= EnvManager::getInstance()->getValue("PATH_SUBFOLDER") ?>cgu"><?= ThemeModel::getInstance()->fetchConfigValue('footer_desc_condition_use') ?></a> /
                         <a class="mt-4" href="<?= EnvManager::getInstance()->getValue("PATH_SUBFOLDER") ?>cgv"><?= ThemeModel::getInstance()->fetchConfigValue('footer_desc_condition_sale') ?></a>
