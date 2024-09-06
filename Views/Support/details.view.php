@@ -10,18 +10,18 @@ use CMW\Utils\Website;
 /* @var CMW\Entity\Support\SupportEntity $support */
 /* @var CMW\Entity\Support\SupportResponseEntity[] $responses */
 
-Website::setTitle("Support");
-Website::setDescription("Consultez les réponses de nos experts.");
+Website::setTitle('Support');
+Website::setDescription('Consultez les réponses de nos experts.');
 ?>
-<?php if(ThemeModel::getInstance()->fetchConfigValue('overlay_everywhere')): ?>
+<?php if (ThemeModel::getInstance()->fetchConfigValue('overlay_everywhere')): ?>
     <div class="overlay"></div>
 <?php endif; ?>
 
 <section class="mb-8 px-8 md:px-36 2xl:px-96">
     <div class="mb-4 text-center">
         <div class="flex justify-between">
-            <a href="<?= EnvManager::getInstance()->getValue("PATH_SUBFOLDER") ?>support" class="btn-short">< Retourner au support</a>
-            <?php if ($support->getStatus() !== "2"): ?>
+            <a href="<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>support" class="btn-short">< Retourner au support</a>
+            <?php if ($support->getStatus() !== '2'): ?>
                 <a href="<?= $support->getCloseUrl() ?>" class="btn-short">Cloturer</a>
             <?php endif; ?>
         </div>
@@ -66,7 +66,7 @@ Website::setDescription("Consultez les réponses de nos experts.");
                     </div>
                 </div>
                 <?php endforeach; ?>
-                <?php if ($support->getStatus() !== "2"): ?>
+                <?php if ($support->getStatus() !== '2'): ?>
                 <form class="space-y-6 mt-4" action="" method="post">
                     <?php (new SecurityManager())->insertHiddenToken() ?>
                     <div class="mb-4">

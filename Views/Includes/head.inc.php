@@ -48,41 +48,41 @@ $siteName = Website::getWebsiteName();
 
 
     <!-- Theme style -->
-    <link rel="stylesheet" type="text/css" href="<?= EnvManager::getInstance()->getValue("PATH_SUBFOLDER") ?>Public/Themes/Nightcraft/Assets/Css/style.css">
-    <link rel="stylesheet" href="<?= EnvManager::getInstance()->getValue("PATH_SUBFOLDER") ?>Admin/Resources/Vendors/Fontawesome-free/Css/fa-all.min.css">
+    <link rel="stylesheet" type="text/css" href="<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>Public/Themes/Nightcraft/Assets/Css/style.css">
+    <link rel="stylesheet" href="<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>Admin/Resources/Vendors/Fontawesome-free/Css/fa-all.min.css">
 
     <?= ImagesManager::getFaviconInclude() ?>
 
     <?php
-    View::loadInclude($includes, "styles");
+        View::loadInclude($includes, 'styles');
     ?>
 
 
 </head>
 
 <style>
-    @font-face {  font-family: angkor;  src:url("<?= EnvManager::getInstance()->getValue("PATH_SUBFOLDER") ?>Public/Themes/Nightcraft/Assets/Webfonts/Angkor-Regular.ttf");  }
-    @font-face {  font-family: ibmplexsans;  src:url("<?= EnvManager::getInstance()->getValue("PATH_SUBFOLDER") ?>Public/Themes/Nightcraft/Assets/Webfonts/IBMPlexSans-Regular.ttf");  }
-    @font-face {  font-family: kanit;  src:url("<?= EnvManager::getInstance()->getValue("PATH_SUBFOLDER") ?>Public/Themes/Nightcraft/Assets/Webfonts/Kanit-Regular.ttf");  }
-    @font-face {  font-family: lora;  src:url("<?= EnvManager::getInstance()->getValue("PATH_SUBFOLDER") ?>Public/Themes/Nightcraft/Assets/Webfonts/Lora-Regular.ttf");  }
-    @font-face {  font-family: madimione;  src:url("<?= EnvManager::getInstance()->getValue("PATH_SUBFOLDER") ?>Public/Themes/Nightcraft/Assets/Webfonts/MadimiOne-Regular.ttf");  }
-    @font-face {  font-family: ojuju;  src:url("<?= EnvManager::getInstance()->getValue("PATH_SUBFOLDER") ?>Public/Themes/Nightcraft/Assets/Webfonts/Ojuju-Regular.ttf");  }
-    @font-face {  font-family: opensans;  src:url("<?= EnvManager::getInstance()->getValue("PATH_SUBFOLDER") ?>Public/Themes/Nightcraft/Assets/Webfonts/OpenSans-Regular.ttf");  }
-    @font-face {  font-family: playfairdisplay;  src:url("<?= EnvManager::getInstance()->getValue("PATH_SUBFOLDER") ?>Public/Themes/Nightcraft/Assets/Webfonts/PlayfairDisplay-Regular.ttf");  }
-    @font-face {  font-family: robotocondensed;  src:url("<?= EnvManager::getInstance()->getValue("PATH_SUBFOLDER") ?>Public/Themes/Nightcraft/Assets/Webfonts/RobotoCondensed-Regular.ttf");  }
-    @font-face {  font-family: robotomono;  src:url("<?= EnvManager::getInstance()->getValue("PATH_SUBFOLDER") ?>Public/Themes/Nightcraft/Assets/Webfonts/RobotoMono-Regular.ttf");  }
-    @font-face {  font-family: robotoslab;  src:url("<?= EnvManager::getInstance()->getValue("PATH_SUBFOLDER") ?>Public/Themes/Nightcraft/Assets/Webfonts/RobotoSlab-Regular.ttf");  }
-    @font-face {  font-family: rubik;  src:url("<?= EnvManager::getInstance()->getValue("PATH_SUBFOLDER") ?>Public/Themes/Nightcraft/Assets/Webfonts/Rubik-Regular.ttf");  }
-    @font-face {  font-family: ubuntu;  src:url("<?= EnvManager::getInstance()->getValue("PATH_SUBFOLDER") ?>Public/Themes/Nightcraft/Assets/Webfonts/Ubuntu-Regular.ttf");  }
-    @font-face {  font-family: roboto;  src:url("<?= EnvManager::getInstance()->getValue("PATH_SUBFOLDER") ?>Public/Themes/Nightcraft/Assets/Webfonts/Roboto-Regular.ttf");  }
-    @font-face {  font-family: unbounded;  src:url("<?= EnvManager::getInstance()->getValue("PATH_SUBFOLDER") ?>Public/Themes/Nightcraft/Assets/Webfonts/Unbounded-Regular.ttf");  }
-    @font-face {  font-family: montserrat;  src:url("<?= EnvManager::getInstance()->getValue("PATH_SUBFOLDER") ?>Public/Themes/Nightcraft/Assets/Webfonts/Montserrat-Regular.ttf");  }
-    @font-face {  font-family: paytone;  src:url("<?= EnvManager::getInstance()->getValue("PATH_SUBFOLDER") ?>Public/Themes/Nightcraft/Assets/Webfonts/PaytoneOne-Regular.ttf");  }
-    @font-face {  font-family: sora;  src:url("<?= EnvManager::getInstance()->getValue("PATH_SUBFOLDER") ?>Public/Themes/Nightcraft/Assets/Webfonts/Sora-Regular.ttf");  }
-    @font-face {  font-family: outfit;  src:url("<?= EnvManager::getInstance()->getValue("PATH_SUBFOLDER") ?>Public/Themes/Nightcraft/Assets/Webfonts/Outfit-Regular.ttf");  }
-    @font-face {  font-family: alata;  src:url("<?= EnvManager::getInstance()->getValue("PATH_SUBFOLDER") ?>Public/Themes/Nightcraft/Assets/Webfonts/Alata-Regular.ttf");  }
-    @font-face {  font-family: titan;  src:url("<?= EnvManager::getInstance()->getValue("PATH_SUBFOLDER") ?>Public/Themes/Nightcraft/Assets/Webfonts/TitanOne-Regular.ttf");  }
-    @font-face {  font-family: pressstart;  src:url("<?= EnvManager::getInstance()->getValue("PATH_SUBFOLDER") ?>Public/Themes/Nightcraft/Assets/Webfonts/PressStart2P-Regular.ttf");  }
+    @font-face {  font-family: angkor;  src:url("<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>Public/Themes/Nightcraft/Assets/Webfonts/Angkor-Regular.ttf");  }
+    @font-face {  font-family: ibmplexsans;  src:url("<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>Public/Themes/Nightcraft/Assets/Webfonts/IBMPlexSans-Regular.ttf");  }
+    @font-face {  font-family: kanit;  src:url("<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>Public/Themes/Nightcraft/Assets/Webfonts/Kanit-Regular.ttf");  }
+    @font-face {  font-family: lora;  src:url("<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>Public/Themes/Nightcraft/Assets/Webfonts/Lora-Regular.ttf");  }
+    @font-face {  font-family: madimione;  src:url("<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>Public/Themes/Nightcraft/Assets/Webfonts/MadimiOne-Regular.ttf");  }
+    @font-face {  font-family: ojuju;  src:url("<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>Public/Themes/Nightcraft/Assets/Webfonts/Ojuju-Regular.ttf");  }
+    @font-face {  font-family: opensans;  src:url("<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>Public/Themes/Nightcraft/Assets/Webfonts/OpenSans-Regular.ttf");  }
+    @font-face {  font-family: playfairdisplay;  src:url("<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>Public/Themes/Nightcraft/Assets/Webfonts/PlayfairDisplay-Regular.ttf");  }
+    @font-face {  font-family: robotocondensed;  src:url("<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>Public/Themes/Nightcraft/Assets/Webfonts/RobotoCondensed-Regular.ttf");  }
+    @font-face {  font-family: robotomono;  src:url("<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>Public/Themes/Nightcraft/Assets/Webfonts/RobotoMono-Regular.ttf");  }
+    @font-face {  font-family: robotoslab;  src:url("<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>Public/Themes/Nightcraft/Assets/Webfonts/RobotoSlab-Regular.ttf");  }
+    @font-face {  font-family: rubik;  src:url("<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>Public/Themes/Nightcraft/Assets/Webfonts/Rubik-Regular.ttf");  }
+    @font-face {  font-family: ubuntu;  src:url("<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>Public/Themes/Nightcraft/Assets/Webfonts/Ubuntu-Regular.ttf");  }
+    @font-face {  font-family: roboto;  src:url("<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>Public/Themes/Nightcraft/Assets/Webfonts/Roboto-Regular.ttf");  }
+    @font-face {  font-family: unbounded;  src:url("<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>Public/Themes/Nightcraft/Assets/Webfonts/Unbounded-Regular.ttf");  }
+    @font-face {  font-family: montserrat;  src:url("<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>Public/Themes/Nightcraft/Assets/Webfonts/Montserrat-Regular.ttf");  }
+    @font-face {  font-family: paytone;  src:url("<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>Public/Themes/Nightcraft/Assets/Webfonts/PaytoneOne-Regular.ttf");  }
+    @font-face {  font-family: sora;  src:url("<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>Public/Themes/Nightcraft/Assets/Webfonts/Sora-Regular.ttf");  }
+    @font-face {  font-family: outfit;  src:url("<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>Public/Themes/Nightcraft/Assets/Webfonts/Outfit-Regular.ttf");  }
+    @font-face {  font-family: alata;  src:url("<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>Public/Themes/Nightcraft/Assets/Webfonts/Alata-Regular.ttf");  }
+    @font-face {  font-family: titan;  src:url("<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>Public/Themes/Nightcraft/Assets/Webfonts/TitanOne-Regular.ttf");  }
+    @font-face {  font-family: pressstart;  src:url("<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>Public/Themes/Nightcraft/Assets/Webfonts/PressStart2P-Regular.ttf");  }
 
     :root {
         --main-color: <?= ThemeModel::getInstance()->fetchConfigValue('main_color') ?>;
@@ -291,6 +291,6 @@ $siteName = Website::getWebsiteName();
 
 <body style="background-color: var(--bg-color); color: var(--text-color)" class="dark font-<?= ThemeModel::getInstance()->fetchConfigValue('main_font') ?> flex flex-col min-h-screen">
 <?php
-View::loadInclude($includes, "beforeScript");
+View::loadInclude($includes, 'beforeScript');
 echo CoreController::getInstance()->cmwWarn();
 ?>

@@ -1,15 +1,15 @@
 <?php
 
-
 use CMW\Manager\Env\EnvManager;
 use CMW\Manager\Security\SecurityManager;
 use CMW\Model\Core\ThemeModel;
 use CMW\Utils\Website;
-Website::setTitle("Double facteur");
-Website::setDescription("Activer le double facteur");
+
+Website::setTitle('Double facteur');
+Website::setDescription('Activer le double facteur');
 
 ?>
-<?php if(ThemeModel::getInstance()->fetchConfigValue('overlay_everywhere')): ?>
+<?php if (ThemeModel::getInstance()->fetchConfigValue('overlay_everywhere')): ?>
     <div class="overlay"></div>
 <?php endif; ?>
 

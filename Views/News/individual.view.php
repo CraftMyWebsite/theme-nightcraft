@@ -3,16 +3,16 @@
 use CMW\Manager\Env\EnvManager;
 use CMW\Utils\Utils;
 /* @var \CMW\Entity\News\NewsEntity $news */
-use CMW\Model\Core\ThemeModel;
-use CMW\Manager\Security\SecurityManager;
 use CMW\Controller\Users\UsersController;
+use CMW\Manager\Security\SecurityManager;
+use CMW\Model\Core\ThemeModel;
 use CMW\Utils\Website;
 
-/*TITRE ET DESCRIPTION*/
-Website::setTitle(ThemeModel::getInstance()->fetchConfigValue('news_title') . ' - '. $news->getTitle());
+/* TITRE ET DESCRIPTION */
+Website::setTitle(ThemeModel::getInstance()->fetchConfigValue('news_title') . ' - ' . $news->getTitle());
 Website::setDescription(ThemeModel::getInstance()->fetchConfigValue('news_description'));
 ?>
-<?php if(ThemeModel::getInstance()->fetchConfigValue('overlay_everywhere')): ?>
+<?php if (ThemeModel::getInstance()->fetchConfigValue('overlay_everywhere')): ?>
     <div class="overlay"></div>
 <?php endif; ?>
 
@@ -43,12 +43,12 @@ Website::setDescription(ThemeModel::getInstance()->fetchConfigValue('news_descri
                         <div>
                             <div class="cursor-pointer">
                                 <?php if ($news->isLikesStatus()): ?>
-                                    <span data-tooltip-target="<?php if ($news->getLikes()->userCanLike()) {echo "tooltip-liked";} else {echo "tooltip-like";} ?>">
+                                    <span data-tooltip-target="<?php if ($news->getLikes()->userCanLike()) { echo 'tooltip-liked'; } else { echo 'tooltip-like'; } ?>">
                         <span class="text-base"><?= $news->getLikes()->getTotal() ?>
                             <?php if ($news->getLikes()->userCanLike()): ?>
                                 <a href="#"><i class="fa-solid fa-heart"></i></a>
                                 <div id="tooltip-liked" role="tooltip" class="hidden lg:inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip">
-                        <?php if(UsersController::isUserLogged()) {echo "Vous aimez déjà !";} else {echo "Connectez-vous pour aimé !";} ?>
+                        <?php if (UsersController::isUserLogged()) { echo 'Vous aimez déjà !'; } else { echo 'Connectez-vous pour aimé !'; } ?>
                             <div class="tooltip-arrow" data-popper-arrow></div>
                             </div>
                             <?php else: ?>
@@ -87,12 +87,12 @@ Website::setDescription(ThemeModel::getInstance()->fetchConfigValue('news_descri
                         <div><?= $comment->getContent() ?></div>
                         <div class="flex justify-end">
                             <div class="cursor-pointer">
-                                <span data-tooltip-target="<?php if ($comment->userCanLike()) {echo "tooltip-liked";} else {echo "tooltip-like";} ?>">
+                                <span data-tooltip-target="<?php if ($comment->userCanLike()) { echo 'tooltip-liked'; } else { echo 'tooltip-like'; } ?>">
                                 <span class="text-base"><?= $comment->getLikes()->getTotal() ?>
                                     <?php if ($comment->userCanLike()): ?>
                                         <a href="#"><i class="fa-solid fa-heart"></i></a>
                                         <div id="tooltip-liked" role="tooltip" class="hidden lg:inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip">
-                                        <?php if(UsersController::isUserLogged()) {echo "Vous aimez déjà !";} else {echo "Connectez-vous pour aimé !";} ?>
+                                        <?php if (UsersController::isUserLogged()) { echo 'Vous aimez déjà !'; } else { echo 'Connectez-vous pour aimé !'; } ?>
                                         <div class="tooltip-arrow" data-popper-arrow></div>
                                     </div>
                                     <?php else: ?>
@@ -118,10 +118,10 @@ Website::setDescription(ThemeModel::getInstance()->fetchConfigValue('news_descri
                             <textarea minlength="50"  id="message" name="comments" rows="4" class="input block p-2.5 w-full text-sm  bg-gray-50 rounded border border-gray-300" placeholder="Bonjour," required></textarea>
                         </div>
                         <div class="text-center mt-4">
-    <?php if(UsersController::isUserLogged()): ?>
+    <?php if (UsersController::isUserLogged()): ?>
                             <button type="submit"  class="btn">Commenter <i class="fa-solid fa-comments"></i></button>
     <?php else: ?>
-                            <a href="<?= EnvManager::getInstance()->getValue("PATH_SUBFOLDER") ?>login" class="btn">Connexion <i class="fa-solid fa-user"></i></a>
+                            <a href="<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>login" class="btn">Connexion <i class="fa-solid fa-user"></i></a>
     <?php endif; ?>
                         </div>
                     </form>

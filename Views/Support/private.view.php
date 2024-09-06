@@ -7,16 +7,16 @@ use CMW\Utils\Website;
 
 /* @var CMW\Entity\Support\SupportEntity[] $privateSupport */
 
-Website::setTitle("Support");
-Website::setDescription("Consultez les réponses de nos experts.");
+Website::setTitle('Support');
+Website::setDescription('Consultez les réponses de nos experts.');
 ?>
-<?php if(ThemeModel::getInstance()->fetchConfigValue('overlay_everywhere')): ?>
+<?php if (ThemeModel::getInstance()->fetchConfigValue('overlay_everywhere')): ?>
     <div class="overlay"></div>
 <?php endif; ?>
 
 <section class="mb-8 px-8 md:px-36 2xl:px-96">
     <div class="mb-4 text-center">
-        <a href="<?= EnvManager::getInstance()->getValue("PATH_SUBFOLDER") ?>support" class="btn-short">Retourner au support</a>
+        <a href="<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>support" class="btn-short">Retourner au support</a>
     </div>
     <div style="background: var(--card-bg-color);" class="rounded-lg col-span-2 h-fit p-4">
         <div class="page-title-divider text-center pt-1 w-full">

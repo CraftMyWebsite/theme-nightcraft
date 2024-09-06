@@ -25,10 +25,10 @@ use CMW\Utils\Website;
 /* @var CMW\Controller\Forum\ForumSettingsController $iconPinColor */
 /* @var CMW\Controller\Forum\ForumSettingsController $iconClosedColor */
 
-Website::setTitle("Forum");
-Website::setDescription("Consultez les sujets de discussion et répondez aux questions posées par les membres de votre communauté.");
+Website::setTitle('Forum');
+Website::setDescription('Consultez les sujets de discussion et répondez aux questions posées par les membres de votre communauté.');
 ?>
-<?php if(ThemeModel::getInstance()->fetchConfigValue('overlay_everywhere')): ?>
+<?php if (ThemeModel::getInstance()->fetchConfigValue('overlay_everywhere')): ?>
     <div class="overlay"></div>
 <?php endif; ?>
 
@@ -38,7 +38,7 @@ Website::setDescription("Consultez les sujets de discussion et répondez aux que
             <nav class="flex" aria-label="Breadcrumb">
                 <ol class="inline-flex items-center space-x-2">
                     <li class="">
-                        <a href="<?= EnvManager::getInstance()->getValue("PATH_SUBFOLDER") ?>forum" class="a-forum">
+                        <a href="<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>forum" class="a-forum">
                             <?= ThemeModel::getInstance()->fetchConfigValue('forum_breadcrumb_home') ?>
                         </a>
                     </li>
@@ -63,7 +63,7 @@ Website::setDescription("Consultez les sujets de discussion et répondez aux que
         </div>
         <div class="flex justify-center">
             <?php if (UsersController::isUserLogged()): ?>
-            <?php if (!$forum->disallowTopics() && ForumPermissionController::getInstance()->hasPermission("user_create_topic") || ForumPermissionController::getInstance()->hasPermission("operator") || ForumPermissionController::getInstance()->hasPermission("admin_bypass_forum_disallow_topics")): ?>
+            <?php if (!$forum->disallowTopics() && ForumPermissionController::getInstance()->hasPermission('user_create_topic') || ForumPermissionController::getInstance()->hasPermission('operator') || ForumPermissionController::getInstance()->hasPermission('admin_bypass_forum_disallow_topics')): ?>
             <a href="<?= $forum->getLink() ?>/add" class="btn"><i
                     class="<?= ThemeModel::getInstance()->fetchConfigValue('forum_btn_create_topic_icon') ?>"></i> <?= ThemeModel::getInstance()->fetchConfigValue('forum_btn_create_topic') ?></a>
                 <?php endif; ?>
@@ -85,7 +85,7 @@ Website::setDescription("Consultez les sujets de discussion et répondez aux que
                             <div class="md:w-[55%] px-2">
                                 <a class="flex items-center" href="<?= $forumEntity->getLink() ?>">
                                     <div class="py-2 px-2 title-color forum-title-divider rounded-xl shadow-connect w-fit h-fit">
-                                        <?= $forumEntity->getFontAwesomeIcon("fa-xl") ?>
+                                        <?= $forumEntity->getFontAwesomeIcon('fa-xl') ?>
                                     </div>
                                     <div class="ml-4">
                                         <div class="font-bold text-lg">
@@ -104,21 +104,21 @@ Website::setDescription("Consultez les sujets de discussion et répondez aux que
                             <!--Dernier message-->
                             <div class="hidden md:block w-[25%] my-auto">
                                 <div class="flex text-sm">
-                                    <?php if ($forumEntity->getLastResponse() !== null) : ?>
+                                    <?php if ($forumEntity->getLastResponse() !== null): ?>
                                     <a href="<?= $forumEntity->getParent()->getLink() ?>/f/<?= $forumEntity->getLastResponse()->getResponseTopic()->getForum()->getSlug() ?>/t/<?= $forumEntity->getLastResponse()->getResponseTopic()->getSlug() ?>/p<?= $forumEntity->getLastResponse()->getPageNumber() ?>/#<?= $forumEntity->getLastResponse()?->getId() ?>">
                                         <?php endif; ?>
                                         <div tabindex="0" class="avatar w-10">
                                             <div class="w-fit rounded-full ">
-                                                <img src="<?= "https://apiv2.craftmywebsite.fr/skins/3d/user=".$forumEntity->getLastResponse()?->getUser()->getPseudo()."&headOnly=true" ?? ThemeModel::getInstance()->fetchImageLink("forum_nobody_send_message_img") ?>"/>
+                                                <img src="<?= 'https://apiv2.craftmywebsite.fr/skins/3d/user=' . $forumEntity->getLastResponse()?->getUser()->getPseudo() . '&headOnly=true' ?? ThemeModel::getInstance()->fetchImageLink('forum_nobody_send_message_img') ?>"/>
                                             </div>
                                         </div>
                                     </a>
-                                    <?php if ($forumEntity->getLastResponse() !== null) : ?>
+                                    <?php if ($forumEntity->getLastResponse() !== null): ?>
                                     <a href="<?= $forumEntity->getParent()->getLink() ?>/f/<?= $forumEntity->getLastResponse()->getResponseTopic()->getForum()->getSlug() ?>/t/<?= $forumEntity->getLastResponse()->getResponseTopic()->getSlug() ?>/p<?= $forumEntity->getLastResponse()->getPageNumber() ?>/#<?= $forumEntity->getLastResponse()?->getId() ?>">
                                         <?php endif; ?>
                                         <div class="ml-2">
                                             <div class=""><?= $forumEntity->getLastResponse()?->getUser()->getPseudo() ?? ThemeModel::getInstance()->fetchConfigValue('forum_nobody_send_message_text') ?></div>
-                                            <div><?= $forumEntity->getLastResponse()?->getCreated() ?? "" ?></div>
+                                            <div><?= $forumEntity->getLastResponse()?->getCreated() ?? '' ?></div>
                                         </div>
                                     </a>
                                 </div>
@@ -156,19 +156,19 @@ Website::setDescription("Consultez les sujets de discussion et répondez aux que
                             <div id='tooltip-important' role='tooltip' class='absolute z-10 invisible inline-block p-2 text-sm font-medium text-white bg-gray-700 rounded-lg'>
                                 Important
                             </div>
-                            " : "" ?>
+                            " : '' ?>
                                             <?= $topic->isPinned() ? "
                             <i data-tooltip-target='tooltip-pined' style='color: $iconPinColor' class='<?= $iconPin ?> fa-sm ml-2'></i>
                             <div id='tooltip-pined' role='tooltip' class='absolute z-10 invisible inline-block p-2 text-sm font-medium text-white bg-gray-700 rounded-lg'>
                                 Épinglé
                             </div>
-                             " : "" ?>
+                             " : '' ?>
                                             <?= $topic->isDisallowReplies() ? "
                             <i data-tooltip-target='tooltip-closed' style='color: $iconClosedColor' class='<?= $iconClosed ?> fa-sm ml-2'></i>
                             <div id='tooltip-closed' role='tooltip' class='absolute z-10 invisible inline-block p-2 text-sm font-medium text-white bg-gray-700 rounded-lg'>
                                 Fermé
                             </div>
-                             " : "" ?>
+                             " : '' ?>
                                         </div>
                                     </a>
                                 </div>
@@ -179,26 +179,26 @@ Website::setDescription("Consultez les sujets de discussion et répondez aux que
                                 <!--Dernier message-->
                                 <div class="hidden md:block w-[25%] my-auto">
                                     <div class="flex text-sm">
-                                        <?php if ($topic->getLastResponse() !== null) : ?>
+                                        <?php if ($topic->getLastResponse() !== null): ?>
                                         <a href="t/<?= $topic->getLastResponse()->getResponseTopic()->getSlug() ?>/p<?= $topic->getLastResponse()->getPageNumber() ?>/#<?= $topic->getLastResponse()?->getId() ?>">
                                             <?php endif; ?>
                                             <div tabindex="0" class="avatar w-10">
                                                 <div class="w-fit rounded-full ">
-                                                    <img src="<?= "https://apiv2.craftmywebsite.fr/skins/3d/user=".$topic->getLastResponse()?->getUser()->getPseudo()."&headOnly=true" ?? ThemeModel::getInstance()->fetchImageLink("forum_nobody_send_message_img") ?>"/>
+                                                    <img src="<?= 'https://apiv2.craftmywebsite.fr/skins/3d/user=' . $topic->getLastResponse()?->getUser()->getPseudo() . '&headOnly=true' ?? ThemeModel::getInstance()->fetchImageLink('forum_nobody_send_message_img') ?>"/>
                                                 </div>
                                             </div>
                                         </a>
-                                        <?php if ($topic->getLastResponse() !== null) : ?>
+                                        <?php if ($topic->getLastResponse() !== null): ?>
                                         <a href="t/<?= $topic->getLastResponse()->getResponseTopic()->getSlug() ?>/p<?= $topic->getLastResponse()->getPageNumber() ?>/#<?= $topic->getLastResponse()?->getId() ?>">
                                             <?php endif; ?>
                                             <div class="ml-2">
                                                 <div class=""><?= $topic->getLastResponse()?->getUser()->getPseudo() ?? ThemeModel::getInstance()->fetchConfigValue('forum_nobody_send_message_text') ?></div>
-                                                <div><?= $topic->getLastResponse()?->getCreated() ?? "" ?></div>
+                                                <div><?= $topic->getLastResponse()?->getCreated() ?? '' ?></div>
                                             </div>
                                         </a>
                                     </div>
                                 </div>
-                                <?php if (UsersController::isAdminLogged()) : ?>
+                                <?php if (UsersController::isAdminLogged()): ?>
                                     <!------------------
                                      -- ADMIN SECTION --
                                     -------------------->
@@ -298,8 +298,8 @@ Website::setDescription("Consultez les sujets de discussion et répondez aux que
                                                                        class=" border text-sm rounded-lg input block w-full p-2.5"
                                                                        placeholder="Titre du topic"
                                                                        value="<?php foreach ($topic->getTags() as $tag) {
-                                                                           echo "" . $tag->getContent() . ",";
-                                                                       } ?>">
+            echo '' . $tag->getContent() . ',';
+        } ?>">
                                                             </div>
                                                         </div>
 
@@ -311,8 +311,8 @@ Website::setDescription("Consultez les sujets de discussion et répondez aux que
                                                                 <select name="prefix" id="prefix"
                                                                         class="border text-sm rounded-lg input block w-full p-2.5">
                                                                     <option value="">Aucun</option>
-                                                                    <?php foreach ($prefixesModel = ForumPrefixModel::getInstance()->getPrefixes() as $prefix) : ?>
-                                                                        <option value="<?= $prefix->getId() ?>" <?= ($topic->getPrefixName() === $prefix->getName() ? "selected" : "") ?>>
+                                                                    <?php foreach ($prefixesModel = ForumPrefixModel::getInstance()->getPrefixes() as $prefix): ?>
+                                                                        <option value="<?= $prefix->getId() ?>" <?= ($topic->getPrefixName() === $prefix->getName() ? 'selected' : '') ?>>
                                                                             <?= $prefix->getName() ?>
                                                                         </option>
                                                                     <?php endforeach; ?>
@@ -327,9 +327,9 @@ Website::setDescription("Consultez les sujets de discussion et répondez aux que
                                                                     <?php foreach ($categoryModel->getCategories() as $cat): ?>
                                                                         <option disabled>──── <?= $cat->getName() ?> ────</option>
                                                                         <?php foreach ($forumModel->getForumByCat($cat->getId()) as $forumObj): ?>
-                                                                            <option value="<?= $forumObj->getId() ?>" <?= ($forumObj->getName() === $topic->getForum()->getName() ? "selected" : "") ?>><?= $forumObj->getName() ?></option>
+                                                                            <option value="<?= $forumObj->getId() ?>" <?= ($forumObj->getName() === $topic->getForum()->getName() ? 'selected' : '') ?>><?= $forumObj->getName() ?></option>
                                                                             <?php foreach ($forumModel->getSubsForums($forumObj->getId()) as $subForum): ?>
-                                                                                <option value="<?= $subForum["subforum"]->getId() ?>" <?= ($subForum["subforum"]->getName() === $topic->getForum()->getName() ? "selected" : "") ?>> <?=str_repeat("      ", $subForum["depth"])?> ↪ <?= $subForum["subforum"]->getName() ?></option>
+                                                                                <option value="<?= $subForum['subforum']->getId() ?>" <?= ($subForum['subforum']->getName() === $topic->getForum()->getName() ? 'selected' : '') ?>> <?= str_repeat("\u{00A0}\u{00A0}\u{00A0}\u{00A0}\u{00A0}\u{00A0}", $subForum['depth']) ?> ↪ <?= $subForum['subforum']->getName() ?></option>
                                                                             <?php endforeach; ?>
                                                                         <?php endforeach; ?>
                                                                     <?php endforeach; ?>
@@ -364,23 +364,23 @@ Website::setDescription("Consultez les sujets de discussion et répondez aux que
             </div>
 
 
-            <?php if ($totalPage > "1"): ?>
+            <?php if ($totalPage > '1'): ?>
                 <div class="mx-auto mt-4">
                     <div class="flex justify-center">
-                        <?php if ($currentPage !== "1"): ?>
+                        <?php if ($currentPage !== '1'): ?>
                             <a href="fp1" style="background-color: var(--main-color);"
                                class="mr-2 p-1 text-sm font-medium rounded-lg ">
                                 <i class="fa-solid fa-chevron-left"></i><i class="fa-solid fa-chevron-left"></i></a>
-                            <a href="fp<?=$currentPage-1?>" style="background-color: var(--main-color);"
+                            <a href="fp<?= $currentPage - 1 ?>" style="background-color: var(--main-color);"
                                class="p-1 text-sm font-medium rounded-l-lg">
                                 <i class="fa-solid fa-chevron-left"></i></a>
                         <?php endif; ?>
-                        <span style="background-color: var(--main-color);" class="p-1 text-sm"><?= $currentPage?>/<?= $totalPage?></span>
+                        <span style="background-color: var(--main-color);" class="p-1 text-sm"><?= $currentPage ?>/<?= $totalPage ?></span>
                         <?php if ($currentPage !== $totalPage): ?>
-                            <a href="fp<?=$currentPage+1?>" style="background-color: var(--main-color);"
+                            <a href="fp<?= $currentPage + 1 ?>" style="background-color: var(--main-color);"
                                class="p-1 text-sm font-medium rounded-r-lg">
                                 <i class="fa-solid fa-chevron-right"></i></a>
-                            <a href="fp<?=$totalPage?>" style="background-color: var(--main-color);"
+                            <a href="fp<?= $totalPage ?>" style="background-color: var(--main-color);"
                                class="ml-2 p-1 text-sm font-medium rounded-lg">
                                 <i class="fa-solid fa-chevron-right"></i><i class="fa-solid fa-chevron-right"></i></a>
                         <?php endif; ?>

@@ -1,10 +1,10 @@
 <?php
 
 use CMW\Controller\Forum\Admin\ForumPermissionController;
-use CMW\Manager\Env\EnvManager;
-use CMW\Model\Core\ThemeModel;
-use CMW\Manager\Security\SecurityManager;
 use CMW\Controller\Users\UsersController;
+use CMW\Manager\Env\EnvManager;
+use CMW\Manager\Security\SecurityManager;
+use CMW\Model\Core\ThemeModel;
 use CMW\Utils\Website;
 
 /** @var \CMW\Entity\Forum\ForumCategoryEntity $category */
@@ -19,10 +19,10 @@ use CMW\Utils\Website;
 /* @var CMW\Controller\Forum\ForumSettingsController $iconPinColor */
 /* @var CMW\Controller\Forum\ForumSettingsController $iconClosedColor */
 
-Website::setTitle("Forum");
-Website::setDescription("Ajouter un sujet");
+Website::setTitle('Forum');
+Website::setDescription('Ajouter un sujet');
 ?>
-<?php if(ThemeModel::getInstance()->fetchConfigValue('overlay_everywhere')): ?>
+<?php if (ThemeModel::getInstance()->fetchConfigValue('overlay_everywhere')): ?>
     <div class="overlay"></div>
 <?php endif; ?>
 
@@ -32,7 +32,7 @@ Website::setDescription("Ajouter un sujet");
             <nav class="flex" aria-label="Breadcrumb">
                 <ol class="inline-flex items-center space-x-2">
                     <li class="">
-                        <a href="<?= EnvManager::getInstance()->getValue("PATH_SUBFOLDER") ?>forum" class="a-forum">
+                        <a href="<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>forum" class="a-forum">
                             <?= ThemeModel::getInstance()->fetchConfigValue('forum_breadcrumb_home') ?>
                         </a>
                     </li>
@@ -63,7 +63,7 @@ Website::setDescription("Ajouter un sujet");
             <h4>Nouveau topic dans : <b><?= $forum->getName() ?></b></h4>
             <form action="" method="post">
                 <?php (new SecurityManager())->insertHiddenToken() ?>
-                <?php if (UsersController::isAdminLogged() || ForumPermissionController::getInstance()->hasPermission("operator")) : ?>
+                <?php if (UsersController::isAdminLogged() || ForumPermissionController::getInstance()->hasPermission('operator')): ?>
                 <!--
                 ADMINISTRATION
                 -->
@@ -75,19 +75,19 @@ Website::setDescription("Ajouter un sujet");
                                 <div class="flex items-center h-5">
                                     <input name="important" value="1" id="important" type="checkbox" class="input  w-4 h-4 rounded" >
                                 </div>
-                                <label for="important" class="ml-2 text-sm font-medium"><i style='color: <?= $iconImportantColor?>' class="<?= $iconImportant ?> fa-sm"></i> Important</label>
+                                <label for="important" class="ml-2 text-sm font-medium"><i style='color: <?= $iconImportantColor ?>' class="<?= $iconImportant ?> fa-sm"></i> Important</label>
                             </div>
                             <div class="flex items-start">
                                 <div class="flex items-center h-5">
                                     <input name="pin" id="pin" type="checkbox" value="" class="input w-4 h-4 rounded" >
                                 </div>
-                                <label for="pin" class="ml-2 text-sm font-medium"><i style='color: <?= $iconPinColor?>' class="<?= $iconPin ?> fa-sm"></i> Épingler</label>
+                                <label for="pin" class="ml-2 text-sm font-medium"><i style='color: <?= $iconPinColor ?>' class="<?= $iconPin ?> fa-sm"></i> Épingler</label>
                             </div>
                             <div class="flex items-start">
                                 <div class="flex items-center h-5">
                                     <input name="disallow_replies" value="1" id="closed" type="checkbox" class="input w-4 h-4 rounded " >
                                 </div>
-                                <label for="closed" class="ml-2 text-sm font-medium"><i style='color: <?= $iconClosedColor?>' class="<?= $iconClosed ?> fa-sm"></i> Fermer</label>
+                                <label for="closed" class="ml-2 text-sm font-medium"><i style='color: <?= $iconClosedColor ?>' class="<?= $iconClosed ?> fa-sm"></i> Fermer</label>
                             </div>
                         </div>
                     </div>

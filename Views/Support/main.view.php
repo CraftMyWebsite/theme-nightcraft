@@ -11,16 +11,16 @@ use CMW\Utils\Website;
 /* @var CMW\Entity\Support\SupportEntity[] $publicSupport */
 /* @var CMW\Entity\Support\SupportSettingEntity $config */
 
-Website::setTitle("Support");
-Website::setDescription("Consultez les réponses de nos experts.");
+Website::setTitle('Support');
+Website::setDescription('Consultez les réponses de nos experts.');
 ?>
-<?php if(ThemeModel::getInstance()->fetchConfigValue('overlay_everywhere')): ?>
+<?php if (ThemeModel::getInstance()->fetchConfigValue('overlay_everywhere')): ?>
     <div class="overlay"></div>
 <?php endif; ?>
 
 <section class="mb-8 px-8 md:px-36 2xl:px-96">
     <div class="mb-4 text-center">
-        <a href="<?= EnvManager::getInstance()->getValue("PATH_SUBFOLDER") ?>support/private" class="btn-short">Voir mes demandes</a>
+        <a href="<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>support/private" class="btn-short">Voir mes demandes</a>
     </div>
     <div class="<?php if ($config->getDefaultVisibility() && $config->visibilityIsDefinedByCustomer() || !$config->visibilityIsDefinedByCustomer()): ?>lg:grid grid-cols-3<?php endif; ?> gap-6">
         <div style="background: var(--card-bg-color);" class="rounded-lg h-fit p-4">

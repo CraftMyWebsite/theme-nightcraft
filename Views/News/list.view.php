@@ -2,15 +2,17 @@
 
 use CMW\Manager\Env\EnvManager;
 use CMW\Model\Core\ThemeModel;
+
 $newsList = $newsModel->getSomeNews(ThemeModel::getInstance()->fetchConfigValue('news_page_number_display'), 'DESC');
+
 use CMW\Controller\Users\UsersController;
 use CMW\Utils\Website;
 
-/*TITRE ET DESCRIPTION*/
+/* TITRE ET DESCRIPTION */
 Website::setTitle(ThemeModel::getInstance()->fetchConfigValue('news_title'));
 Website::setDescription(ThemeModel::getInstance()->fetchConfigValue('news_description'));
 ?>
-<?php if(ThemeModel::getInstance()->fetchConfigValue('overlay_everywhere')): ?>
+<?php if (ThemeModel::getInstance()->fetchConfigValue('overlay_everywhere')): ?>
     <div class="overlay"></div>
 <?php endif; ?>
 
@@ -19,7 +21,7 @@ Website::setDescription(ThemeModel::getInstance()->fetchConfigValue('news_descri
         <?php foreach ($newsList as $news): ?>
         <div style="background: var(--card-bg-color);" class="flex flex-col p-4 rounded-2xl">
             <div class="relative h-52 overflow-hidden zoomable-image">
-                <a href="<?= EnvManager::getInstance()->getValue("PATH_SUBFOLDER") ?>news/<?= $news->getSlug() ?>" class="rotate-news">
+                <a href="<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>news/<?= $news->getSlug() ?>" class="rotate-news">
                     <img src="<?= $news->getImageLink() ?>" style="object-fit: cover" class="rotate-news-img top-0 left-0 absolute w-full h-full rounded-lg">
                 </a>
             </div>
@@ -34,7 +36,7 @@ Website::setDescription(ThemeModel::getInstance()->fetchConfigValue('news_descri
                             <p class="text-xs"><?= $news->getDateCreated() ?></p>
                         </div>
                         <div>
-                            <a href="<?= EnvManager::getInstance()->getValue("PATH_SUBFOLDER") ?>news/<?= $news->getSlug() ?>" class="btn">Lire l'article</a>
+                            <a href="<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>news/<?= $news->getSlug() ?>" class="btn">Lire l'article</a>
                         </div>
                     </div>
 

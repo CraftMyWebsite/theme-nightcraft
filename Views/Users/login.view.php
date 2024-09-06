@@ -1,15 +1,15 @@
 <?php
 
-use CMW\Manager\Env\EnvManager;
-use CMW\Model\Core\ThemeModel;
 use CMW\Controller\Core\SecurityController;
+use CMW\Manager\Env\EnvManager;
 use CMW\Manager\Security\SecurityManager;
+use CMW\Model\Core\ThemeModel;
 use CMW\Utils\Website;
 
-Website::setTitle("Connexion");
-Website::setDescription("Connectez-vous sur " . Website::getWebsiteName());
+Website::setTitle('Connexion');
+Website::setDescription('Connectez-vous sur ' . Website::getWebsiteName());
 ?>
-<?php if(ThemeModel::getInstance()->fetchConfigValue('overlay_everywhere')): ?>
+<?php if (ThemeModel::getInstance()->fetchConfigValue('overlay_everywhere')): ?>
     <div class="overlay"></div>
 <?php endif; ?>
 
@@ -38,7 +38,7 @@ Website::setDescription("Connectez-vous sur " . Website::getWebsiteName());
                         </div>
                         <label for="login_keep_connect" class="ml-2 text-sm font-medium ">Se souvenir de moi</label>
                     </div>
-                    <a href="<?= EnvManager::getInstance()->getValue("PATH_SUBFOLDER") ?>login/forgot" class="a-base">Mot de passe oublié ?</a>
+                    <a href="<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>login/forgot" class="a-base">Mot de passe oublié ?</a>
                 </div>
                 <div class="flex justify-center mt-2">
                     <?php SecurityController::getPublicData(); ?>

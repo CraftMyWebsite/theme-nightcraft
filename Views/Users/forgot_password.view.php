@@ -7,11 +7,11 @@ use CMW\Manager\Security\SecurityManager;
 use CMW\Model\Core\ThemeModel;
 use CMW\Utils\Website;
 
-/*TITRE ET DESCRIPTION*/
-Website::setTitle("Mot de passe oublié");
+/* TITRE ET DESCRIPTION */
+Website::setTitle('Mot de passe oublié');
 Website::setDescription("C'est pas très bien d'oublié son mot de passe ...");
 ?>
-<?php if(ThemeModel::getInstance()->fetchConfigValue('overlay_everywhere')): ?>
+<?php if (ThemeModel::getInstance()->fetchConfigValue('overlay_everywhere')): ?>
     <div class="overlay"></div>
 <?php endif; ?>
 

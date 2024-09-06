@@ -1,22 +1,21 @@
 <?php
 
-use CMW\Manager\Env\EnvManager;
-use CMW\Model\Core\ThemeModel;
 use CMW\Controller\Core\SecurityController;
+use CMW\Manager\Env\EnvManager;
 use CMW\Manager\Lang\LangManager;
 use CMW\Manager\Security\SecurityManager;
-
+use CMW\Model\Core\ThemeModel;
 use CMW\Utils\Utils;
 use CMW\Utils\Website;
 
-Website::setTitle("Inscription");
-Website::setDescription("Inscrivez-vous");
+Website::setTitle('Inscription');
+Website::setDescription('Inscrivez-vous');
 ?>
-<?php if(ThemeModel::getInstance()->fetchConfigValue('overlay_everywhere')): ?>
+<?php if (ThemeModel::getInstance()->fetchConfigValue('overlay_everywhere')): ?>
     <div class="overlay"></div>
 <?php endif; ?>
 
-<?php if(ThemeModel::getInstance()->fetchConfigValue('header_allow_register_button')): ?>
+<?php if (ThemeModel::getInstance()->fetchConfigValue('header_allow_register_button')): ?>
     <div class="mt-auto mx-auto relative w-full max-w-md h-full mb-4">
         <h4 style="background-color: var(--card-bg-color); color: var(--main-color)" class="rounded-xl p-2 text-center my-4">Inscription</h4>
         <div style="background-color: var(--card-bg-color)" class="rounded-xl">

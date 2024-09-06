@@ -4,16 +4,16 @@ use CMW\Controller\Core\ThemeController;
 use CMW\Controller\Users\UsersController;
 use CMW\Manager\Env\EnvManager;
 use CMW\Manager\Theme\ThemeManager;
-use CMW\Model\Users\UsersModel;
 use CMW\Model\Core\ThemeModel;
+use CMW\Model\Users\UsersModel;
 use CMW\Model\Votes\VotesConfigModel;
 use CMW\Utils\Website;
 
-/*TITRE ET DESCRIPTION*/
-Website::setTitle("Votez");
+/* TITRE ET DESCRIPTION */
+Website::setTitle('Votez');
 Website::setDescription("Votez, obtenez des points de vote et plein d'autres cadeaux!");
 ?>
-<?php if(ThemeModel::getInstance()->fetchConfigValue('overlay_everywhere')): ?>
+<?php if (ThemeModel::getInstance()->fetchConfigValue('overlay_everywhere')): ?>
     <div class="overlay"></div>
 <?php endif; ?>
 
@@ -29,7 +29,7 @@ Website::setDescription("Votez, obtenez des points de vote et plein d'autres cad
                         <div style="background-color: var(--card-in-card-bg-color);" class="rounded-lg p-2 mb-4">
                             <div class="text-center">Pour pouvoir voter et récupérer vos récompenses, vous devez être connecté sur le site, alors n'attendez plus pour obtenir des récompenses uniques !</div>
                             <div class="pt-4 pb-2 text-center">
-                                <a href="<?= EnvManager::getInstance()->getValue("PATH_SUBFOLDER") ?>login" class="btn">Connexion</i></a>
+                                <a href="<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>login" class="btn">Connexion</i></a>
                             </div>
                         </div>
                     <?php else: ?>
@@ -69,7 +69,9 @@ Website::setDescription("Votez, obtenez des points de vote et plein d'autres cad
                     </tr>
                     </thead>
                     <tbody>
-                    <?php $i = 0; foreach ($topCurrent as $top): $i++; ?>
+                    <?php $i = 0;
+                    foreach ($topCurrent as $top):
+                        $i++; ?>
                     <tr style="background-color: var(--card-in-card-bg-color);">
                         <td scope="row" class="flex items-center lg:px-6 font-medium whitespace-nowrap">
                             <img class="hidden lg:inline-block w-10 h-10" src="https://apiv2.craftmywebsite.fr/skins/3d/user=<?= $top->getUser()->getPseudo() ?>&headOnly=true" alt="...">
@@ -78,23 +80,23 @@ Website::setDescription("Votez, obtenez des points de vote et plein d'autres cad
                             </div>
                         </td>
                         <td class="py-4 px-6 text-center">
-                            <?php $color_position = $i  ?>
+                            <?php $color_position = $i ?>
                             <div class="<?php
-                            switch ($color_position) {
-                                case '1':
-                                    echo "bg-amber-400";
-                                    break;
-                                case '2':
-                                    echo "bg-amber-300";
-                                    break;
-                                case '3':
-                                    echo "bg-amber-200";
-                                    break;
-                                default:
-                                    echo "bg-blue-200";
-                                    break;
-                            }
-                            ?> inline-block px-3 py-1 rounded-sm font-medium text-black"># <?= $i ?></div>
+                        switch ($color_position) {
+                            case '1':
+                                echo 'bg-amber-400';
+                                break;
+                            case '2':
+                                echo 'bg-amber-300';
+                                break;
+                            case '3':
+                                echo 'bg-amber-200';
+                                break;
+                            default:
+                                echo 'bg-blue-200';
+                                break;
+                        }
+                    ?> inline-block px-3 py-1 rounded-sm font-medium text-black"># <?= $i ?></div>
                         </td>
                         <td class="py-4 px-6 text-center">
                             <div class="font-medium"><?= $top->getVotes() ?></div>
@@ -106,7 +108,7 @@ Website::setDescription("Votez, obtenez des points de vote et plein d'autres cad
             </div>
         </div>
     </div>
-    <?php if(ThemeModel::getInstance()->fetchConfigValue('votes_display_global')): ?>
+    <?php if (ThemeModel::getInstance()->fetchConfigValue('votes_display_global')): ?>
     <div style="background-color: var(--card-bg-color);" class="rounded-lg col-span-2 h-fit mt-8">
         <div class="page-title-divider text-center pt-1 w-full">
             <h4 style="color: var(--main-color)">Top <?= VotesConfigModel::getInstance()->getConfig()->getTopShow() ?> global</h4>
@@ -127,7 +129,9 @@ Website::setDescription("Votez, obtenez des points de vote et plein d'autres cad
                 </tr>
                 </thead>
                 <tbody>
-                <?php $i = 0; foreach ($topGlobal as $top): $i++; ?>
+                <?php $i = 0;
+                foreach ($topGlobal as $top):
+                    $i++; ?>
                 <tr style="background-color: var(--card-in-card-bg-color);">
                     <td scope="row" class="flex items-center lg:px-6 font-medium whitespace-nowrap">
                         <img class="hidden lg:inline-block w-10 h-10 rounded-full" src="https://apiv2.craftmywebsite.fr/skins/3d/user=<?= $top->getUser()->getPseudo() ?>&headOnly=true" alt="...">
@@ -136,23 +140,23 @@ Website::setDescription("Votez, obtenez des points de vote et plein d'autres cad
                         </div>
                     </td>
                     <td class="py-4 px-6 text-center">
-                        <?php $color_position = $i  ?>
+                        <?php $color_position = $i ?>
                         <div class="<?php
-                        switch ($color_position) {
-                            case '1':
-                                echo "bg-amber-400";
-                                break;
-                            case '2':
-                                echo "bg-amber-300";
-                                break;
-                            case '3':
-                                echo "bg-amber-200";
-                                break;
-                            default:
-                                echo "bg-blue-200";
-                                break;
-                        }
-                        ?>
+                    switch ($color_position) {
+                        case '1':
+                            echo 'bg-amber-400';
+                            break;
+                        case '2':
+                            echo 'bg-amber-300';
+                            break;
+                        case '3':
+                            echo 'bg-amber-200';
+                            break;
+                        default:
+                            echo 'bg-blue-200';
+                            break;
+                    }
+                    ?>
                         inline-block px-3 py-1 rounded-sm font-medium text-black"># <?= $i ?></div>
                     </td>
                     <td class="py-4 px-6 text-center">

@@ -8,11 +8,10 @@ use CMW\Utils\Website;
 
 /** @var \CMW\Model\Forum\ForumModel $forumModel */
 /** @var \CMW\Entity\Forum\ForumCategoryEntity $category */
-
-Website::setTitle("Forum");
-Website::setDescription("Consulter les catégorie du Forum");
+Website::setTitle('Forum');
+Website::setDescription('Consulter les catégorie du Forum');
 ?>
-<?php if(ThemeModel::getInstance()->fetchConfigValue('overlay_everywhere')): ?>
+<?php if (ThemeModel::getInstance()->fetchConfigValue('overlay_everywhere')): ?>
     <div class="overlay"></div>
 <?php endif; ?>
 
@@ -22,7 +21,7 @@ Website::setDescription("Consulter les catégorie du Forum");
             <nav class="flex" aria-label="Breadcrumb">
                 <ol class="inline-flex items-center space-x-2">
                     <li class="">
-                        <a href="<?= EnvManager::getInstance()->getValue("PATH_SUBFOLDER") ?>forum" class="a-forum">
+                        <a href="<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>forum" class="a-forum">
                             <?= ThemeModel::getInstance()->fetchConfigValue('forum_breadcrumb_home') ?>
                         </a>
                     </li>
@@ -38,7 +37,7 @@ Website::setDescription("Consulter les catégorie du Forum");
         </div>
         <div class="flex">
             <div class="relative w-full">
-                <form action="<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER')?>forum/search" method="POST">
+                <form action="<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>forum/search" method="POST">
                     <?php (new SecurityManager())->insertHiddenToken() ?>
                     <input type="text" name="for"
                            class="input block p-1.5 w-full z-20 text-sm rounded-lg border-l-2"
@@ -63,7 +62,7 @@ Website::setDescription("Consulter les catégorie du Forum");
                         <div class="md:w-[55%] px-2">
                             <a class="flex items-center" href="<?= $forumObj->getLink() ?>">
                                 <div class="py-2 px-2 title-color forum-title-divider rounded-xl shadow-connect w-fit h-fit">
-                                    <?= $forumObj->getFontAwesomeIcon("fa-xl") ?>
+                                    <?= $forumObj->getFontAwesomeIcon('fa-xl') ?>
                                 </div>
                                 <div class="ml-4">
                                     <div class="font-bold text-lg">
@@ -82,21 +81,21 @@ Website::setDescription("Consulter les catégorie du Forum");
                         <!--Dernier message-->
                         <div class="hidden md:block w-[25%] my-auto">
                             <div class="flex text-sm">
-                                <?php if ($forumObj->getLastResponse() !== null) : ?>
+                                <?php if ($forumObj->getLastResponse() !== null): ?>
                                 <a href="<?= $forumObj->getParent()->getLink() ?>/f/<?= $forumObj->getLastResponse()->getResponseTopic()->getForum()->getSlug() ?>/t/<?= $forumObj->getLastResponse()->getResponseTopic()->getSlug() ?>/p<?= $forumObj->getLastResponse()->getPageNumber() ?>/#<?= $forumObj->getLastResponse()?->getId() ?>">
                                     <?php endif; ?>
                                     <div tabindex="0" class="avatar w-10">
                                         <div class="w-fit rounded-full ">
-                                            <img src="<?= "https://apiv2.craftmywebsite.fr/skins/3d/user=".$forumObj->getLastResponse()?->getUser()->getPseudo()."&headOnly=true" ?? ThemeModel::getInstance()->fetchImageLink("forum_nobody_send_message_img") ?>"/>
+                                            <img src="<?= 'https://apiv2.craftmywebsite.fr/skins/3d/user=' . $forumObj->getLastResponse()?->getUser()->getPseudo() . '&headOnly=true' ?? ThemeModel::getInstance()->fetchImageLink('forum_nobody_send_message_img') ?>"/>
                                         </div>
                                     </div>
                                 </a>
-                                <?php if ($forumObj->getLastResponse() !== null) : ?>
+                                <?php if ($forumObj->getLastResponse() !== null): ?>
                                 <a href="<?= $forumObj->getParent()->getLink() ?>/f/<?= $forumObj->getLastResponse()->getResponseTopic()->getForum()->getSlug() ?>/t/<?= $forumObj->getLastResponse()->getResponseTopic()->getSlug() ?>/p<?= $forumObj->getLastResponse()->getPageNumber() ?>/#<?= $forumObj->getLastResponse()?->getId() ?>">
                                     <?php endif; ?>
                                     <div class="ml-2">
                                         <div class=""><?= $forumObj->getLastResponse()?->getUser()->getPseudo() ?? ThemeModel::getInstance()->fetchConfigValue('forum_nobody_send_message_text') ?></div>
-                                        <div><?= $forumObj->getLastResponse()?->getCreated() ?? "" ?></div>
+                                        <div><?= $forumObj->getLastResponse()?->getCreated() ?? '' ?></div>
                                     </div>
                                 </a>
                             </div>

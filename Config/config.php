@@ -1,6 +1,14 @@
-<?php use CMW\Controller\Core\PackageController; use CMW\Controller\Core\ThemeController; use CMW\Utils\Utils;use CMW\Manager\Lang\LangManager;use CMW\Model\Core\ThemeModel;use CMW\Utils\SecurityService;use CMW\Model\Votes\VotesConfigModel;use CMW\Model\Core\CoreModel;
+<?php
+use CMW\Controller\Core\PackageController;
+use CMW\Controller\Core\ThemeController;
+use CMW\Manager\Lang\LangManager;
+use CMW\Model\Core\CoreModel;
+use CMW\Model\Core\ThemeModel;
+use CMW\Model\Votes\VotesConfigModel;
+use CMW\Utils\SecurityService;
+use CMW\Utils\Utils;
 
-if (PackageController::isInstalled("News")) {
+if (PackageController::isInstalled('News')) {
     /* @var \CMW\Entity\News\NewsEntity $news */
     $newsList = \CMW\Model\News\NewsModel::getInstance()->getNews();
 }
@@ -54,27 +62,27 @@ if (PackageController::isInstalled("News")) {
         <li>
             <button type="button" data-tabs-target="#tab2" role="tab">Accueil</button>
         </li>
-        <?php if (PackageController::isInstalled("News")): ?>
+        <?php if (PackageController::isInstalled('News')): ?>
             <li>
                 <button type="button" data-tabs-target="#tab3" role="tab">News</button>
             </li>
         <?php endif; ?>
-        <?php if (PackageController::isInstalled("Faq")): ?>
+        <?php if (PackageController::isInstalled('Faq')): ?>
             <li>
                 <button type="button" data-tabs-target="#tab4" role="tab">F.A.Q</button>
             </li>
         <?php endif; ?>
-        <?php if (PackageController::isInstalled("Votes")): ?>
+        <?php if (PackageController::isInstalled('Votes')): ?>
             <li>
                 <button type="button" data-tabs-target="#tab5" role="tab">Votes</button>
             </li>
         <?php endif; ?>
-        <?php if (PackageController::isInstalled("Wiki")): ?>
+        <?php if (PackageController::isInstalled('Wiki')): ?>
             <li>
                 <button type="button" data-tabs-target="#tab6" role="tab">Wiki</button>
             </li>
         <?php endif; ?>
-        <?php if (PackageController::isInstalled("Forum")): ?>
+        <?php if (PackageController::isInstalled('Forum')): ?>
             <li>
                 <button type="button" data-tabs-target="#tab7" role="tab">Forum</button>
             </li>
@@ -172,70 +180,70 @@ if (PackageController::isInstalled("News")) {
                 <div class="mt-4">
                     <label for="hero_button_link">Police d'écriture :</label>
                     <select class="form-select" name="main_font" required>
-                        <option value="angkor" <?= ThemeModel::getInstance()->fetchConfigValue('main_font') === "angkor" ? 'selected' : '' ?>>
+                        <option value="angkor" <?= ThemeModel::getInstance()->fetchConfigValue('main_font') === 'angkor' ? 'selected' : '' ?>>
                             Angkor
                         </option>
-                        <option value="ibmplexsans" <?= ThemeModel::getInstance()->fetchConfigValue('main_font') === "ibmplexsans" ? 'selected' : '' ?>>
+                        <option value="ibmplexsans" <?= ThemeModel::getInstance()->fetchConfigValue('main_font') === 'ibmplexsans' ? 'selected' : '' ?>>
                             ibmplexsans
                         </option>
-                        <option value="kanit" <?= ThemeModel::getInstance()->fetchConfigValue('main_font') === "kanit" ? 'selected' : '' ?>>
+                        <option value="kanit" <?= ThemeModel::getInstance()->fetchConfigValue('main_font') === 'kanit' ? 'selected' : '' ?>>
                             kanit
                         </option>
-                        <option value="lora" <?= ThemeModel::getInstance()->fetchConfigValue('main_font') === "lora" ? 'selected' : '' ?>>
+                        <option value="lora" <?= ThemeModel::getInstance()->fetchConfigValue('main_font') === 'lora' ? 'selected' : '' ?>>
                             lora
                         </option>
-                        <option value="madimione" <?= ThemeModel::getInstance()->fetchConfigValue('main_font') === "madimione" ? 'selected' : '' ?>>
+                        <option value="madimione" <?= ThemeModel::getInstance()->fetchConfigValue('main_font') === 'madimione' ? 'selected' : '' ?>>
                             madimione
                         </option>
-                        <option value="ojuju" <?= ThemeModel::getInstance()->fetchConfigValue('main_font') === "ojuju" ? 'selected' : '' ?>>
+                        <option value="ojuju" <?= ThemeModel::getInstance()->fetchConfigValue('main_font') === 'ojuju' ? 'selected' : '' ?>>
                             ojuju
                         </option>
-                        <option value="opensans" <?= ThemeModel::getInstance()->fetchConfigValue('main_font') === "opensans" ? 'selected' : '' ?>>
+                        <option value="opensans" <?= ThemeModel::getInstance()->fetchConfigValue('main_font') === 'opensans' ? 'selected' : '' ?>>
                             opensans
                         </option>
-                        <option value="playfairdisplay" <?= ThemeModel::getInstance()->fetchConfigValue('main_font') === "playfairdisplay" ? 'selected' : '' ?>>
+                        <option value="playfairdisplay" <?= ThemeModel::getInstance()->fetchConfigValue('main_font') === 'playfairdisplay' ? 'selected' : '' ?>>
                             playfairdisplay
                         </option>
-                        <option value="robotocondensed" <?= ThemeModel::getInstance()->fetchConfigValue('main_font') === "robotocondensed" ? 'selected' : '' ?>>
+                        <option value="robotocondensed" <?= ThemeModel::getInstance()->fetchConfigValue('main_font') === 'robotocondensed' ? 'selected' : '' ?>>
                             robotocondensed
                         </option>
-                        <option value="robotomono" <?= ThemeModel::getInstance()->fetchConfigValue('main_font') === "robotomono" ? 'selected' : '' ?>>
+                        <option value="robotomono" <?= ThemeModel::getInstance()->fetchConfigValue('main_font') === 'robotomono' ? 'selected' : '' ?>>
                             robotomono
                         </option>
-                        <option value="robotoslab" <?= ThemeModel::getInstance()->fetchConfigValue('main_font') === "robotoslab" ? 'selected' : '' ?>>
+                        <option value="robotoslab" <?= ThemeModel::getInstance()->fetchConfigValue('main_font') === 'robotoslab' ? 'selected' : '' ?>>
                             robotoslab
                         </option>
-                        <option value="rubik" <?= ThemeModel::getInstance()->fetchConfigValue('main_font') === "rubik" ? 'selected' : '' ?>>
+                        <option value="rubik" <?= ThemeModel::getInstance()->fetchConfigValue('main_font') === 'rubik' ? 'selected' : '' ?>>
                             rubik
                         </option>
-                        <option value="ubuntu" <?= ThemeModel::getInstance()->fetchConfigValue('main_font') === "ubuntu" ? 'selected' : '' ?>>
+                        <option value="ubuntu" <?= ThemeModel::getInstance()->fetchConfigValue('main_font') === 'ubuntu' ? 'selected' : '' ?>>
                             ubuntu
                         </option>
-                        <option value="roboto" <?= ThemeModel::getInstance()->fetchConfigValue('main_font') === "roboto" ? 'selected' : '' ?>>
+                        <option value="roboto" <?= ThemeModel::getInstance()->fetchConfigValue('main_font') === 'roboto' ? 'selected' : '' ?>>
                             roboto (par défaut)
                         </option>
-                        <option value="unbounded" <?= ThemeModel::getInstance()->fetchConfigValue('main_font') === "unbounded" ? 'selected' : '' ?>>
+                        <option value="unbounded" <?= ThemeModel::getInstance()->fetchConfigValue('main_font') === 'unbounded' ? 'selected' : '' ?>>
                             unbounded
                         </option>
-                        <option value="montserrat" <?= ThemeModel::getInstance()->fetchConfigValue('main_font') === "montserrat" ? 'selected' : '' ?>>
+                        <option value="montserrat" <?= ThemeModel::getInstance()->fetchConfigValue('main_font') === 'montserrat' ? 'selected' : '' ?>>
                             montserrat
                         </option>
-                        <option value="paytone" <?= ThemeModel::getInstance()->fetchConfigValue('main_font') === "paytone" ? 'selected' : '' ?>>
+                        <option value="paytone" <?= ThemeModel::getInstance()->fetchConfigValue('main_font') === 'paytone' ? 'selected' : '' ?>>
                             paytone
                         </option>
-                        <option value="sora" <?= ThemeModel::getInstance()->fetchConfigValue('main_font') === "sora" ? 'selected' : '' ?>>
+                        <option value="sora" <?= ThemeModel::getInstance()->fetchConfigValue('main_font') === 'sora' ? 'selected' : '' ?>>
                             sora
                         </option>
-                        <option value="outfit" <?= ThemeModel::getInstance()->fetchConfigValue('main_font') === "outfit" ? 'selected' : '' ?>>
+                        <option value="outfit" <?= ThemeModel::getInstance()->fetchConfigValue('main_font') === 'outfit' ? 'selected' : '' ?>>
                             outfit
                         </option>
-                        <option value="alata" <?= ThemeModel::getInstance()->fetchConfigValue('main_font') === "alata" ? 'selected' : '' ?>>
+                        <option value="alata" <?= ThemeModel::getInstance()->fetchConfigValue('main_font') === 'alata' ? 'selected' : '' ?>>
                             alata
                         </option>
-                        <option value="titan" <?= ThemeModel::getInstance()->fetchConfigValue('main_font') === "titan" ? 'selected' : '' ?>>
+                        <option value="titan" <?= ThemeModel::getInstance()->fetchConfigValue('main_font') === 'titan' ? 'selected' : '' ?>>
                             titan
                         </option>
-                        <option value="pressstart" <?= ThemeModel::getInstance()->fetchConfigValue('main_font') === "pressstart" ? 'selected' : '' ?>>
+                        <option value="pressstart" <?= ThemeModel::getInstance()->fetchConfigValue('main_font') === 'pressstart' ? 'selected' : '' ?>>
                             pressstart
                         </option>
                     </select>
@@ -341,7 +349,7 @@ if (PackageController::isInstalled("News")) {
                     </div>
                 </div>
                 <div class="text-center ">
-                    <img class="w-100" src="<?= ThemeModel::getInstance()->fetchImageLink("overlay_img") ?>" alt="Image introuvable !">
+                    <img class="w-100" src="<?= ThemeModel::getInstance()->fetchImageLink('overlay_img') ?>" alt="Image introuvable !">
                 </div>
                 <div class="drop-img-area" data-input-name="overlay_img"></div>
             </div>
@@ -355,7 +363,7 @@ if (PackageController::isInstalled("News")) {
                         <div>
                             <h6>Page d'erreur / 404 :</h6>
                             <label for="404_width">Largeur de l'image: <input type="range" id="404_width" name="404_width" value="<?= ThemeModel::getInstance()->fetchConfigValue('404_width') ?>" min="0" max="100"></label><br>
-                                <img class="w-50 mx-auto" src="<?= ThemeModel::getInstance()->fetchImageLink("404_img") ?>" alt="Image introuvable !">
+                                <img class="w-50 mx-auto" src="<?= ThemeModel::getInstance()->fetchImageLink('404_img') ?>" alt="Image introuvable !">
                             <div class="drop-img-area" data-input-name="404_img"></div>
                         </div>
                     </div>
@@ -363,7 +371,7 @@ if (PackageController::isInstalled("News")) {
                         <div>
                             <h6>Maintenance :</h6>
                             <label for="maintenance_width">Largeur de l'image: <input type="range" id="maintenance_width" name="maintenance_width" value="<?= ThemeModel::getInstance()->fetchConfigValue('maintenance_width') ?>" min="0" max="100"></label><br>
-                                <img class="w-50 mx-auto" src="<?= ThemeModel::getInstance()->fetchImageLink("maintenance_img") ?>" alt="Image introuvable !">
+                                <img class="w-50 mx-auto" src="<?= ThemeModel::getInstance()->fetchImageLink('maintenance_img') ?>" alt="Image introuvable !">
                             <div class="drop-img-area" data-input-name="maintenance_img"></div>
                         </div>
                     </div>
@@ -398,7 +406,7 @@ if (PackageController::isInstalled("News")) {
                 </div>
                 <div class="grid-2">
                     <div class="flex justify-center">
-                        <img class="w-25" src="<?= ThemeModel::getInstance()->fetchImageLink("header_img_logo") ?>"
+                        <img class="w-25" src="<?= ThemeModel::getInstance()->fetchImageLink('header_img_logo') ?>"
                              alt="Image introuvable !">
                     </div>
                     <div class="drop-img-area mt-4" data-input-name="header_img_logo"></div>
@@ -477,7 +485,7 @@ if (PackageController::isInstalled("News")) {
         </div>
         <hr>
         <!--NEWS-->
-        <?php if (PackageController::isInstalled("News")): ?>
+        <?php if (PackageController::isInstalled('News')): ?>
             <div class="card-in-card mt-4">
                 <div class="card-body">
                     <label class="toggle">
@@ -508,7 +516,7 @@ if (PackageController::isInstalled("News")) {
                 <div class="grid-2">
                     <div>
                         <label for="home_join_width">Largeur de l'image: <input type="range" id="home_join_width" name="home_join_width" value="<?= ThemeModel::getInstance()->fetchConfigValue('home_join_width') ?>" min="0" max="100"></label><br>
-                        <img class="w-50 mx-auto" src="<?= ThemeModel::getInstance()->fetchImageLink("join_section_img") ?>" alt="Image introuvable !">
+                        <img class="w-50 mx-auto" src="<?= ThemeModel::getInstance()->fetchImageLink('join_section_img') ?>" alt="Image introuvable !">
                         <div class="drop-img-area" data-input-name="join_section_img"></div>
                     </div>
                     <div>
@@ -598,7 +606,7 @@ if (PackageController::isInstalled("News")) {
     </div>
     <div class="tab-content" id="tab3">
         <!---NEWS---->
-        <?php if (PackageController::isInstalled("News")): ?>
+        <?php if (PackageController::isInstalled('News')): ?>
             <h6>Indéxation de la page (meta) :</h6>
             <div class="alert alert-warning">
                 <h6 class="alert-heading">Bien comprendre l'indéxation</h6>
@@ -638,7 +646,7 @@ if (PackageController::isInstalled("News")) {
     </div>
     <div class="tab-content" id="tab4">
         <!---FAQ---->
-        <?php if (PackageController::isInstalled("Faq")): ?>
+        <?php if (PackageController::isInstalled('Faq')): ?>
             <h6>Indéxation de la page (meta) :</h6>
             <div class="alert alert-warning">
                 <h6 class="alert-heading">Bien comprendre l'indéxation</h6>
@@ -697,7 +705,7 @@ if (PackageController::isInstalled("News")) {
     </div>
     <!---VOTES---->
     <div class="tab-content" id="tab5">
-        <?php if (PackageController::isInstalled("Votes")): ?>
+        <?php if (PackageController::isInstalled('Votes')): ?>
             <h6>Indéxation de la page (meta) :</h6>
             <div class="alert alert-warning">
                 <h6 class="alert-heading">Bien comprendre l'indéxation</h6>
@@ -756,7 +764,7 @@ if (PackageController::isInstalled("News")) {
     </div>
     <div class="tab-content" id="tab6">
         <!---WIKI---->
-        <?php if (PackageController::isInstalled("Wiki")): ?>
+        <?php if (PackageController::isInstalled('Wiki')): ?>
             <h6>Indéxation de la page (meta) :</h6>
             <div class="alert alert-warning">
                 <h6 class="alert-heading">Bien comprendre l'indéxation</h6>
@@ -848,7 +856,7 @@ if (PackageController::isInstalled("News")) {
     </div>
     <div class="tab-content" id="tab7">
         <!---FORUM---->
-        <?php if (PackageController::isInstalled("Forum")): ?>
+        <?php if (PackageController::isInstalled('Forum')): ?>
 
             <h6>Indéxation de la page (meta) :</h6>
             <div class="alert alert-warning">
@@ -910,7 +918,7 @@ if (PackageController::isInstalled("News")) {
                         <h6>Image :</h6>
                         <div class="flex justify-center">
                             <img class="w-24"
-                                 src="<?= ThemeModel::getInstance()->fetchImageLink("forum_nobody_send_message_img") ?>"
+                                 src="<?= ThemeModel::getInstance()->fetchImageLink('forum_nobody_send_message_img') ?>"
                                  alt="Image introuvable !">
                         </div>
                         <div class="drop-img-area" data-input-name="forum_nobody_send_message_img"></div>

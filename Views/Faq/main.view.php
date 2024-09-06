@@ -1,21 +1,21 @@
-<?php 
+<?php
 use CMW\Controller\Core\SecurityController;
 use CMW\Manager\Security\SecurityManager;
 use CMW\Model\Contact\ContactModel;
 use CMW\Model\Core\ThemeModel;
 use CMW\Utils\Website;
 
-/*TITRE ET DESCRIPTION*/
+/* TITRE ET DESCRIPTION */
 Website::setTitle(ThemeModel::getInstance()->fetchConfigValue('faq_title'));
 Website::setDescription(ThemeModel::getInstance()->fetchConfigValue('faq_description'));
 ?>
-<?php if(ThemeModel::getInstance()->fetchConfigValue('overlay_everywhere')): ?>
+<?php if (ThemeModel::getInstance()->fetchConfigValue('overlay_everywhere')): ?>
     <div class="overlay"></div>
 <?php endif; ?>
 
 <section class="mb-8 px-8 md:px-36 2xl:px-96">
-    <div class="<?php if(ThemeModel::getInstance()->fetchConfigValue('faq_display_form')): {echo "lg:grid grid-cols-3 gap-6";} endif ?>">
-        <?php if(ThemeModel::getInstance()->fetchConfigValue('faq_display_form')): ?>
+    <div class="<?php if (ThemeModel::getInstance()->fetchConfigValue('faq_display_form')): { echo 'lg:grid grid-cols-3 gap-6'; } endif ?>">
+        <?php if (ThemeModel::getInstance()->fetchConfigValue('faq_display_form')): ?>
         <div style="background-color: var(--card-bg-color)" class="rounded-lg p-4 h-fit">
             <h4 style="color: var(--main-color)" class="text-center"><?= ThemeModel::getInstance()->fetchConfigValue('faq_question_title') ?></h4>
             <form action="contact" method="post" class="space-y-4">
@@ -48,11 +48,11 @@ Website::setDescription(ThemeModel::getInstance()->fetchConfigValue('faq_descrip
         <div style="background-color: var(--card-bg-color)" class="col-span-2 rounded-lg p-4 h-fit">
             <h4 style="color: var(--main-color)" class="text-center"><?= ThemeModel::getInstance()->fetchConfigValue('faq_answer_title') ?></h4>
             <div class="space-y-3">
-                <?php foreach ($faqList as $faq) : ?>
+                <?php foreach ($faqList as $faq): ?>
                 <div style="background-color: var(--card-in-card-bg-color)" class="rounded-xl p-4">
                     <div class="flex justify-between items-center">
                         <p class="text-lg"><?= $faq->getQuestion() ?></p>
-                        <?php if(ThemeModel::getInstance()->fetchConfigValue('faq_display_autor')): ?>
+                        <?php if (ThemeModel::getInstance()->fetchConfigValue('faq_display_autor')): ?>
                         <p class="mini-card"><?= $faq->getAuthor()->getPseudo() ?></p>
                         <?php endif; ?>
                     </div>

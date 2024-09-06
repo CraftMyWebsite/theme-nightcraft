@@ -5,10 +5,10 @@ use CMW\Manager\Security\SecurityManager;
 use CMW\Model\Core\ThemeModel;
 use CMW\Utils\Website;
 
-Website::setTitle("Contactez-nous");
-Website::setDescription("Contactez-nous dès maintenant");
+Website::setTitle('Contactez-nous');
+Website::setDescription('Contactez-nous dès maintenant');
 ?>
-<?php if(ThemeModel::getInstance()->fetchConfigValue('overlay_everywhere')): ?>
+<?php if (ThemeModel::getInstance()->fetchConfigValue('overlay_everywhere')): ?>
     <div class="overlay"></div>
 <?php endif; ?>
 

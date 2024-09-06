@@ -10,7 +10,7 @@ use CMW\Utils\Website;
 Website::setTitle(ucfirst($page->getTitle()));
 Website::setDescription(ucfirst($page->getTitle()));
 ?>
-<?php if(ThemeModel::getInstance()->fetchConfigValue('overlay_everywhere')): ?>
+<?php if (ThemeModel::getInstance()->fetchConfigValue('overlay_everywhere')): ?>
     <div class="overlay"></div>
 <?php endif; ?>
 

@@ -2,27 +2,26 @@
 
 use CMW\Controller\Core\PackageController;
 use CMW\Controller\Minecraft\MinecraftController;
-use CMW\Manager\Env\EnvManager;
 use CMW\Controller\Users\UsersController;
+use CMW\Manager\Env\EnvManager;
 use CMW\Model\Core\MenusModel;
-use CMW\Model\Minecraft\MinecraftModel;
-use CMW\Model\Shop\Cart\ShopCartModel;
-use CMW\Model\Shop\Cart\ShopCartItemModel;
-use CMW\Model\Users\UsersModel;
 use CMW\Model\Core\ThemeModel;
+use CMW\Model\Minecraft\MinecraftModel;
+use CMW\Model\Shop\Cart\ShopCartItemModel;
+use CMW\Model\Shop\Cart\ShopCartModel;
+use CMW\Model\Users\UsersModel;
 use CMW\Utils\Website;
 
-if (PackageController::isInstalled("Shop")) {
+if (PackageController::isInstalled('Shop')) {
     $itemInCart = ShopCartItemModel::getInstance()->countItemsByUserId(UsersModel::getCurrentUser()?->getId(), session_id());
 }
 
-if (PackageController::isInstalled("Minecraft")) {
+if (PackageController::isInstalled('Minecraft')) {
     $mc = new minecraftModel;
     $favExist = $mc->favExist();
     if ($favExist) {
         $minecraft = MinecraftController::pingServer($mc->getFavServer()->getServerIp(), $mc->getFavServer()->getServerPort())->getPlayersOnline();
     }
-
 }
 
 $menus = MenusModel::getInstance();
@@ -50,33 +49,33 @@ $menus = MenusModel::getInstance();
                     <img class="inline mr-2" loading="lazy" alt="player head" width="30px" src="https://apiv2.craftmywebsite.fr/skins/3d/user=<?= UsersModel::getCurrentUser()->getPseudo() ?>&headOnly=true"> <?= UsersModel::getCurrentUser()->getPseudo() ?></a>
                 <div id="dropdown1" style="background-color: var(--main-color); z-index: 500"  class="hidden w-44 rounded divide-y divide-gray-100 shadow">
                     <div class="py-1 text-sm " aria-labelledby="multiLevelDropdownButton">
-                    <?php if (UsersController::isAdminLogged()) : ?>
+                    <?php if (UsersController::isAdminLogged()): ?>
                         <div>
-                            <a href="<?= EnvManager::getInstance()->getValue("PATH_SUBFOLDER") ?>cmw-admin"
+                            <a href="<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>cmw-admin"
                                target="_blank" class="block py-2 px-4 "><i
                                     class="fa-solid fa-screwdriver-wrench"></i> Administration</a>
                         </div>
                     <?php endif; ?>
                         <div>
-                            <a href="<?= EnvManager::getInstance()->getValue("PATH_SUBFOLDER") ?>profile"
+                            <a href="<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>profile"
                                class="block py-2 px-4 "><i class="fa-regular fa-address-card"></i>
                                 Profil</a>
                         </div>
-                    <?php if (PackageController::isInstalled("Shop")): ?>
+                    <?php if (PackageController::isInstalled('Shop')): ?>
                         <div>
-                            <a href="<?= EnvManager::getInstance()->getValue("PATH_SUBFOLDER") ?>shop/settings"
+                            <a href="<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>shop/settings"
                                class="block py-2 px-4 "><i class="fa-solid fa-gear"></i>
                                 Paramètres</a>
                         </div>
                         <div>
-                            <a href="<?= EnvManager::getInstance()->getValue("PATH_SUBFOLDER") ?>shop/history"
+                            <a href="<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>shop/history"
                                class="block py-2 px-4 "><i class="fa-solid fa-clipboard-list"></i>
                                 Commandes</a>
                         </div>
                     <?php endif; ?>
                     </div>
                     <div class="py-1">
-                        <a href="<?= EnvManager::getInstance()->getValue("PATH_SUBFOLDER") ?>logout"
+                        <a href="<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>logout"
                            class="block py-2 px-4 text-sm text-red-700 "><i
                                 class="fa-solid fa-right-from-bracket"></i> Déconnexion</a>
                     </div>
@@ -85,11 +84,11 @@ $menus = MenusModel::getInstance();
             <?php else: ?>
             <div class="space-x-3">
             <?php if (ThemeModel::getInstance()->fetchConfigValue('header_allow_login_button')): ?>
-                <a href="<?= EnvManager::getInstance()->getValue("PATH_SUBFOLDER") ?>login"
+                <a href="<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>login"
                    class="btn uppercase">Connexion</a>
             <?php endif; ?>
                     <?php if (ThemeModel::getInstance()->fetchConfigValue('header_allow_register_button')): ?>
-                <a href="<?= EnvManager::getInstance()->getValue("PATH_SUBFOLDER") ?>register"
+                <a href="<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>register"
                    class="hidden md:inline btn uppercase">Inscription</a>
                     <?php endif; ?>
             </div>
@@ -101,7 +100,7 @@ $menus = MenusModel::getInstance();
 
                 <?php foreach ($menus->getMenus() as $menu): ?>
                     <?php if ($menu->isUserAllowed()): ?>
-                <a id="multiLevelDropdownButton" data-dropdown-toggle="dropdown-<?= $menu->getId() ?>" <?= !$menu->isTargetBlank() ?: "target='_blank'" ?> class="<?php if ($menu->urlIsActive()) {echo "nav-btn-active";} else {echo "nav-btn";} ?> " href="<?= $menu->getUrl() ?>"><?= $menu->getName() ?></a>
+                <a id="multiLevelDropdownButton" data-dropdown-toggle="dropdown-<?= $menu->getId() ?>" <?= !$menu->isTargetBlank() ?: "target='_blank'" ?> class="<?php if ($menu->urlIsActive()) { echo 'nav-btn-active'; } else { echo 'nav-btn'; } ?> " href="<?= $menu->getUrl() ?>"><?= $menu->getName() ?></a>
 
                 <div id="dropdown-<?= $menu->getId() ?>" style="background-color: var(--main-color)" class="hidden z-10 w-44 rounded divide-y divide-gray-100 shadow">
                         <?php foreach ($menus->getSubMenusByMenu($menu->getId()) as $subMenu): ?>

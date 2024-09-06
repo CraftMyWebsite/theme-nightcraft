@@ -7,10 +7,10 @@ use CMW\Manager\Security\SecurityManager;
 use CMW\Model\Core\ThemeModel;
 use CMW\Utils\Website;
 
-Website::setTitle("Votre profil");
-Website::setDescription("Éditez votre profil");
+Website::setTitle('Votre profil');
+Website::setDescription('Éditez votre profil');
 ?>
-<?php if(ThemeModel::getInstance()->fetchConfigValue('overlay_everywhere')): ?>
+<?php if (ThemeModel::getInstance()->fetchConfigValue('overlay_everywhere')): ?>
     <div class="overlay"></div>
 <?php endif; ?>
 
@@ -96,7 +96,7 @@ Website::setDescription("Éditez votre profil");
                 </div>
                 <div class="p-4 flex flex-col justify-center items-center">
                     <p class="block mt-2 mb-2 text-sm font-medium">Nous sommes triste de vous voir partir !</p>
-                    <a href="<?= EnvManager::getInstance()->getValue("PATH_SUBFOLDER") ?>profile/delete/<?= $user->getId() ?>" style="background-color: #e30d0d; color: white" class="w-full rounded text-sm px-5 py-2.5 text-center">Supprimer mon compte</a>
+                    <a href="<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>profile/delete/<?= $user->getId() ?>" style="background-color: #e30d0d; color: white" class="w-full rounded text-sm px-5 py-2.5 text-center">Supprimer mon compte</a>
                 </div>
             </div>
         </div>

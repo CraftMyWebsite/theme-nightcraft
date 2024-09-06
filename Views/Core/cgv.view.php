@@ -3,11 +3,11 @@ use CMW\Model\Contact\ContactModel;
 use CMW\Model\Core\ThemeModel;
 use CMW\Utils\Website;
 
-/*TITRE ET DESCRIPTION*/
-Website::setTitle("CGV");
-Website::setDescription("Condition de vente");
+/* TITRE ET DESCRIPTION */
+Website::setTitle('CGV');
+Website::setDescription('Condition de vente');
 ?>
-<?php if(ThemeModel::getInstance()->fetchConfigValue('overlay_everywhere')): ?>
+<?php if (ThemeModel::getInstance()->fetchConfigValue('overlay_everywhere')): ?>
     <div class="overlay"></div>
 <?php endif; ?>
 <section class="mb-8 px-8 md:px-36 2xl:px-96">
