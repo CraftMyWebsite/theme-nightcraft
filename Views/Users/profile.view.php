@@ -22,7 +22,7 @@ Website::setDescription('Éditez votre profil');
                     <h2 class="title-color font-semibold text-xl uppercase">Informations personnel</h2>
                 </div>
                 <div class="p-4">
-                    <form class="lg:space-y-6 mt-4" action="profile/update" method="post">
+                    <form class="lg:space-y-6 mt-4" action="<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') . 'profile/update' ?>" method="post">
                         <?php (new SecurityManager())->insertHiddenToken() ?>
                         <div class="md:grid md:grid-cols-2 gap-4">
                             <div>
