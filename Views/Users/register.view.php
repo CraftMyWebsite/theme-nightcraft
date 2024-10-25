@@ -8,6 +8,8 @@ use CMW\Model\Core\ThemeModel;
 use CMW\Utils\Utils;
 use CMW\Utils\Website;
 
+/* @var \CMW\Interface\Users\IUsersOAuth[] $oAuths */
+
 Website::setTitle('Inscription');
 Website::setDescription('Inscrivez-vous');
 ?>
@@ -52,6 +54,24 @@ Website::setDescription('Inscrivez-vous');
                 </div>
                 <button type="submit" class="btn w-full">M'inscrire</button>
             </form>
+                <div class="flex flex-no-wrap justify-center items-center py-4">
+                    <div class="bg-gray-500 flex-grow h-px max-w-sm"></div>
+                    <div class="px-10 w-auto">
+                        <p class="font-medium">S'enregistrer avec</p>
+                    </div>
+                    <div class="bg-gray-500 flex-grow h-px max-w-sm"></div>
+                </div>
+                <div class="px-4 py-2 justify-center text-center w-full sm:w-auto">
+                    <div class="flex-wrap inline-flex space-x-3">
+                        <?php foreach ($oAuths as $oAuth): ?>
+                            <a href="oauth/<?= $oAuth->methodIdentifier() ?>" class="hover:text-blue-600"
+                               aria-label="<?= $oAuth->methodeName() ?>">
+                                <img src="<?= $oAuth->methodeIconLink() ?>"
+                                     alt="<?= $oAuth->methodeName() ?>" width="32" height="32"/>
+                            </a>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
         </div>
     </div>
 </div>
