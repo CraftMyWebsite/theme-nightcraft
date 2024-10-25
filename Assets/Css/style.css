@@ -2293,6 +2293,9 @@ pre {
   .lg\:mb-4 {
     margin-bottom: 1rem;
   }
+    .lg\:w-96 {
+        width: 24rem;
+    }
 
   .lg\:mt-0 {
     margin-top: 0px;
