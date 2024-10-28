@@ -19,7 +19,7 @@ Website::setDescription('Éditez votre profil');
         <div class="lg:grid grid-cols-2 gap-6">
             <div class=" h-fit">
                 <div class="page-title-divider text-center pt-1 w-full">
-                    <h2 class="title-color font-semibold text-xl uppercase">Informations personnel</h2>
+                    <h2 class="title-color font-semibold text-xl uppercase">Informations personnelles</h2>
                 </div>
                 <div class="p-4">
                     <form class="lg:space-y-6 mt-4" action="<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') . 'profile/update' ?>" method="post">
