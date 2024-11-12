@@ -207,7 +207,7 @@ $i = 0;
                             <form id="modal-<?= $topic->getId() ?>"
                                   action="p1/reportTopic/<?= $topic->getId() ?>"
                                   method="post">
-                                <?php (new SecurityManager())->insertHiddenToken() ?>
+                                <?php SecurityManager::getInstance()->insertHiddenToken() ?>
                                 <div class="p-4">
                                     <div>
                                         <label for="reportTopic"
@@ -428,7 +428,7 @@ $i = 0;
                                 <form id="modal-<?= $response->getId() ?>"
                                       action="p1/reportResponse/<?= $response->getId() ?>"
                                       method="post">
-                                    <?php (new SecurityManager())->insertHiddenToken() ?>
+                                    <?php SecurityManager::getInstance()->insertHiddenToken() ?>
                                     <div class="p-4">
                                         <div>
                                             <label for="reportTopic"
@@ -691,7 +691,7 @@ $i = 0;
                         <div class="col-span-4 py-4 pr-2">
                             <div class="h-fit">
                                 <form action="" method="post">
-                                    <?php (new SecurityManager())->insertHiddenToken() ?>
+                                    <?php SecurityManager::getInstance()->insertHiddenToken() ?>
                                     <input hidden type="text" name="topicId" value="<?= $topic->getId() ?>">
                                     <textarea minlength="20" class="w-full tinymce" name="topicResponse"></textarea>
                                     <div class="flex justify-center mt-2">

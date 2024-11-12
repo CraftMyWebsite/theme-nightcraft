@@ -239,7 +239,7 @@ Website::setDescription('Consultez les sujets de discussion et répondez aux que
                                                 <div class="p-4">
 
                                                     <form id="modal-<?= $topic->getId() ?>" action="<?= $forum->getLink() ?>/adminedit" method="post">
-                                                        <?php (new SecurityManager())->insertHiddenToken() ?>
+                                                        <?php SecurityManager::getInstance()->insertHiddenToken() ?>
                                                         <input type="text" name="topicId" hidden value="<?= $topic->getId() ?>">
 
                                                         <div class="flex justify-between mb-2">

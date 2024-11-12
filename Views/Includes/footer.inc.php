@@ -53,7 +53,7 @@ use CMW\Utils\Website;
             <div class="mt-4">
                 <?php if (PackageController::isInstalled('Newsletter')): ?>
                 <form action="<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>newsletter" method="post">
-                    <?php (new SecurityManager())->insertHiddenToken() ?>
+                    <?php SecurityManager::getInstance()->insertHiddenToken() ?>
                     <label for="mail">NewsLetter :</label>
                     <div class="inline-block">
                         <input id="mail" name="newsletter_users_mail" class="input" type="email" placeholder="votre@mail.fr" required>

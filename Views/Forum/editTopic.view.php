@@ -57,7 +57,7 @@ Website::setDescription('Éditez un topic');
 
             <h4>Édition du topic : <b><?= $topic->getName() ?></b></h4>
             <form action="" method="post">
-                <?php (new SecurityManager())->insertHiddenToken() ?>
+                <?php SecurityManager::getInstance()->insertHiddenToken() ?>
                 <p class="font-semibold mt-4 text-center">Topic<span class="text-red-500">*</span></p>
                 <div class="grid gap-6 mb-4 md:grid-cols-2 mt-4">
                     <div>

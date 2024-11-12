@@ -18,7 +18,7 @@ Website::setDescription('Activer le double facteur');
     <div style="background-color: var(--card-bg-color)" class="rounded-xl">
         <div class="py-6 px-6 lg:px-8">
             <form class="space-y-6" action="<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') . 'login/validate/tfa' ?>" method="post">
-                <?php (new SecurityManager())->insertHiddenToken() ?>
+                <?php SecurityManager::getInstance()->insertHiddenToken() ?>
                 <div>
                     <label for="code" class="block mb-2 text-sm font-medium">Code d'authentification</label>
                     <input id="code" name="code" type="text" class="input border border-gray-300 text-sm rounded-lg block w-full p-2.5" placeholder="123456" required>

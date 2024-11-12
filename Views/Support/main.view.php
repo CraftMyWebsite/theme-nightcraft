@@ -29,7 +29,7 @@ Website::setDescription('Consultez les réponses de nos experts.');
             </div>
             <div class="p-4">
                 <form class="space-y-6" action="" method="post">
-                    <?php (new SecurityManager())->insertHiddenToken() ?>
+                    <?php SecurityManager::getInstance()->insertHiddenToken() ?>
                     <div class="mb-2">
                         <label for="support_question" class="block mb-2 text-sm font-medium ">Votre demande :</label>
                         <textarea minlength="20" id="support_question" rows="4" name="support_question"

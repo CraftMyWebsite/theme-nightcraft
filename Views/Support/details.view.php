@@ -68,7 +68,7 @@ Website::setDescription('Consultez les réponses de nos experts.');
                 <?php endforeach; ?>
                 <?php if ($support->getStatus() !== '2'): ?>
                 <form class="space-y-6 mt-4" action="" method="post">
-                    <?php (new SecurityManager())->insertHiddenToken() ?>
+                    <?php SecurityManager::getInstance()->insertHiddenToken() ?>
                     <div class="mb-4">
                         <label for="support_response_content" class="block mb-2 text-sm font-bold">Votre réponse :</label>
                         <textarea minlength="20" id="support_response_content" name="support_response_content" rows="4"

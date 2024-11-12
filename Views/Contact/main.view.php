@@ -17,7 +17,7 @@ Website::setDescription('Contactez-nous dès maintenant');
     <div style="background-color: var(--card-bg-color)" class="p-6 rounded-xl">
         <h4 style="color: var(--main-color)" class="text-center">Nous contacter</h4>
         <form action="" method="post" class="space-y-4">
-            <?php (new SecurityManager())->insertHiddenToken() ?>
+            <?php SecurityManager::getInstance()->insertHiddenToken() ?>
             <div class="lg:grid grid-cols-2 gap-6">
                 <div>
                     <label for="email">Votre mail :</label>
