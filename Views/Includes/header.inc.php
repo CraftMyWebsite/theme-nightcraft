@@ -3,17 +3,15 @@
 use CMW\Controller\Core\PackageController;
 use CMW\Controller\Minecraft\MinecraftController;
 use CMW\Controller\Users\UsersController;
+use CMW\Controller\Users\UsersSessionsController;
 use CMW\Manager\Env\EnvManager;
 use CMW\Model\Core\MenusModel;
 use CMW\Model\Core\ThemeModel;
 use CMW\Model\Minecraft\MinecraftModel;
 use CMW\Model\Shop\Cart\ShopCartItemModel;
-use CMW\Model\Shop\Cart\ShopCartModel;
-use CMW\Model\Users\UsersModel;
-use CMW\Utils\Website;
 
 if (PackageController::isInstalled('Shop')) {
-    $itemInCart = ShopCartItemModel::getInstance()->countItemsByUserId(UsersModel::getCurrentUser()?->getId(), session_id());
+    $itemInCart = ShopCartItemModel::getInstance()->countItemsByUserId(UsersSessionsController::getInstance()->getCurrentUser()?->getId(), session_id());
 }
 
 if (PackageController::isInstalled('Minecraft')) {
@@ -46,7 +44,7 @@ $menus = MenusModel::getInstance();
             <?php if (UsersController::isUserLogged()): ?>
             <div>
                 <a id="multiLevelDropdownButton" data-dropdown-toggle="dropdown1" class="cursor-pointer uppercase btn">
-                    <img class="inline mr-2" loading="lazy" alt="player head" width="30px" src="https://apiv2.craftmywebsite.fr/skins/3d/user=<?= UsersModel::getCurrentUser()->getPseudo() ?>&headOnly=true"> <?= UsersModel::getCurrentUser()->getPseudo() ?></a>
+                    <img class="inline mr-2" loading="lazy" alt="player head" width="30px" src="https://apiv2.craftmywebsite.fr/skins/3d/user=<?= UsersSessionsController::getInstance()->getCurrentUser()->getPseudo() ?>&headOnly=true"> <?= UsersSessionsController::getInstance()->getCurrentUser()->getPseudo() ?></a>
                 <div id="dropdown1" style="background-color: var(--main-color); z-index: 500"  class="hidden w-44 rounded divide-y divide-gray-100 shadow">
                     <div class="py-1 text-sm " aria-labelledby="multiLevelDropdownButton">
                     <?php if (UsersController::isAdminLogged()): ?>
