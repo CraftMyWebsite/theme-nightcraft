@@ -9,6 +9,7 @@ use CMW\Model\Core\MenusModel;
 use CMW\Model\Core\ThemeModel;
 use CMW\Model\Minecraft\MinecraftModel;
 use CMW\Model\Shop\Cart\ShopCartItemModel;
+use CMW\Utils\Website;
 
 if (PackageController::isInstalled('Shop')) {
     $itemInCart = ShopCartItemModel::getInstance()->countItemsByUserId(UsersSessionsController::getInstance()->getCurrentUser()?->getId(), session_id());
@@ -43,8 +44,20 @@ $menus = MenusModel::getInstance();
 
             <?php if (UsersController::isUserLogged()): ?>
             <div>
-                <a id="multiLevelDropdownButton" data-dropdown-toggle="dropdown1" class="cursor-pointer uppercase btn">
-                    <img class="inline mr-2" loading="lazy" alt="player head" width="30px" src="https://apiv2.craftmywebsite.fr/skins/3d/user=<?= UsersSessionsController::getInstance()->getCurrentUser()->getPseudo() ?>&headOnly=true"> <?= UsersSessionsController::getInstance()->getCurrentUser()->getPseudo() ?></a>
+                <div class="inline-flex" style="align-items: baseline">
+                    <a id="multiLevelDropdownButton" data-dropdown-toggle="dropdown1" class="cursor-pointer uppercase btn">
+                        <img class="inline mr-2" loading="lazy" alt="player head" width="30px" src="https://apiv2.craftmywebsite.fr/skins/3d/user=<?= UsersSessionsController::getInstance()->getCurrentUser()->getPseudo() ?>&headOnly=true"> <?= UsersSessionsController::getInstance()->getCurrentUser()->getPseudo() ?></a>
+                    <?php if (PackageController::isInstalled('Shop')): ?>
+                        <div>
+                            <a href="<?= Website::getProtocol() ?>://<?= $_SERVER['SERVER_NAME'] ?><?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>shop/cart" style="display: inline-flex; position: relative; align-items: center; padding: .75rem;font-size: 0.875rem;line-height: 1.25rem">
+                                <i class="text-lg fa-solid fa-cart-shopping"></i>
+                                <span class="sr-only">Articles</span>
+                                <div style="display: inline-flex; position: absolute; top: -0.2rem; right: -0.2rem; justify-content: center; align-items: center;width: 1.2rem; height: 1.2rem; font-size: 0.75rem;line-height: 1rem;font-weight: 700; color: white; background: red; border-radius: 100%"><?= $itemInCart ?></div>
+                            </a>
+                        </div>
+                    <?php endif; ?>
+                </div>
+
                 <div id="dropdown1" style="background-color: var(--main-color); z-index: 500"  class="hidden w-44 rounded divide-y divide-gray-100 shadow">
                     <div class="py-1 text-sm " aria-labelledby="multiLevelDropdownButton">
                     <?php if (UsersController::isAdminLogged()): ?>
