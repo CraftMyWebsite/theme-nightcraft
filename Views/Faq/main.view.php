@@ -6,18 +6,15 @@ use CMW\Model\Core\ThemeModel;
 use CMW\Utils\Website;
 
 /* TITRE ET DESCRIPTION */
-Website::setTitle(ThemeModel::getInstance()->fetchConfigValue('faq_title'));
-Website::setDescription(ThemeModel::getInstance()->fetchConfigValue('faq_description'));
+Website::setTitle(ThemeModel::getInstance()->fetchConfigValue('faq','faq_page_title'));
+Website::setDescription('');
 ?>
-<?php if (ThemeModel::getInstance()->fetchConfigValue('overlay_everywhere')): ?>
-    <div class="overlay"></div>
-<?php endif; ?>
+<div data-cmw-visible="global:overlay_everywhere" data-cmw-style="background-image:global:overlay_img" class="overlay"></div>
 
 <section class="mb-8 px-8 md:px-36 2xl:px-96">
-    <div class="<?php if (ThemeModel::getInstance()->fetchConfigValue('faq_display_form')): { echo 'lg:grid grid-cols-3 gap-6'; } endif ?>">
-        <?php if (ThemeModel::getInstance()->fetchConfigValue('faq_display_form')): ?>
-        <div style="background-color: var(--card-bg-color)" class="rounded-lg p-4 h-fit">
-            <h4 style="color: var(--main-color)" class="text-center"><?= ThemeModel::getInstance()->fetchConfigValue('faq_question_title') ?></h4>
+    <div class="<?php if (ThemeModel::getInstance()->fetchConfigValue('faq','faq_display_form')): { echo 'lg:grid grid-cols-3 gap-6'; } endif ?>">
+        <div data-cmw-visible="faq:faq_display_form" style="background-color: var(--card-bg-color)" class="rounded-lg p-4 h-fit">
+            <h4 data-cmw="faq:faq_question_title" style="color: var(--main-color)" class="text-center"></h4>
             <form action="contact" method="post" class="space-y-4">
                 <?php SecurityManager::getInstance()->insertHiddenToken() ?>
                 <div>
@@ -44,17 +41,14 @@ Website::setDescription(ThemeModel::getInstance()->fetchConfigValue('faq_descrip
                 </div>
             </form>
         </div>
-        <?php endif; ?>
         <div style="background-color: var(--card-bg-color)" class="col-span-2 rounded-lg p-4 h-fit">
-            <h4 style="color: var(--main-color)" class="text-center"><?= ThemeModel::getInstance()->fetchConfigValue('faq_answer_title') ?></h4>
+            <h4 style="color: var(--main-color)" class="text-center" data-cmw="faq:faq_answer_title"></h4>
             <div class="space-y-3">
                 <?php foreach ($faqList as $faq): ?>
                 <div style="background-color: var(--card-in-card-bg-color)" class="rounded-xl p-4">
                     <div class="flex justify-between items-center">
                         <p class="text-lg"><?= $faq->getQuestion() ?></p>
-                        <?php if (ThemeModel::getInstance()->fetchConfigValue('faq_display_autor')): ?>
-                        <p class="mini-card"><?= $faq->getAuthor()->getPseudo() ?></p>
-                        <?php endif; ?>
+                        <p data-cmw-visible="faq:faq_display_autor" class="mini-card"><?= $faq->getAuthor()->getPseudo() ?></p>
                     </div>
                     <i><?= $faq->getResponse() ?></i>
                 </div>

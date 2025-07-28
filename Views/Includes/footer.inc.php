@@ -19,34 +19,26 @@ use CMW\Utils\Website;
         <div class="md:flex justify-between">
             <div class="space-y-6">
                 <div>
-                    <h3><?= Website::getWebsiteName() ?></h3>
-                    <p class="text-xs"><?= Website::getWebsiteName() ?> n'est en aucun cas affilié à Mojang AB.</p>
+                    <h3 data-cmw-visible="footer:footer_use_title"><?= Website::getWebsiteName() ?></h3>
+                    <p class="text-xs" data-cmw="footer:footer_message"></p>
                 </div>
                 <div class="space-x-6">
-                    <a onclick="copyURL('<?= ThemeModel::getInstance()->fetchConfigValue('join_ip') ?>')" class="home-button uppercase font-bold px-3 py-2 rounded cursor-pointer space-x-3">
-                        <span><?= ThemeModel::getInstance()->fetchConfigValue('join_ip') ?></span>
+                    <a onclick="copyURL('<?= ThemeModel::getInstance()->fetchConfigValue('header','join_ip') ?>')" class="home-button uppercase font-bold px-3 py-2 rounded cursor-pointer space-x-3">
+                        <span data-cmw="header:join_ip"></span>
                     </a>
                     <div class="flex-wrap inline-flex space-x-3">
-                        <?php if (ThemeModel::getInstance()->fetchConfigValue('footer_active_facebook')): ?>
-                            <a href="<?= ThemeModel::getInstance()->fetchConfigValue('footer_link_facebook') ?>" <?php if (ThemeModel::getInstance()->fetchConfigValue('footer_open_link_new_tab')): ?>target="_blank"<?php endif; ?> class="head-a">
-                                <i class="fa-xl <?= ThemeModel::getInstance()->fetchConfigValue('footer_icon_facebook') ?>"></i>
-                            </a>
-                        <?php endif; ?>
-                        <?php if (ThemeModel::getInstance()->fetchConfigValue('footer_active_twitter')): ?>
-                            <a href="<?= ThemeModel::getInstance()->fetchConfigValue('footer_link_twitter') ?>" <?php if (ThemeModel::getInstance()->fetchConfigValue('footer_open_link_new_tab')): ?>target="_blank"<?php endif; ?> class="head-a">
-                                <i class="fa-xl <?= ThemeModel::getInstance()->fetchConfigValue('footer_icon_twitter') ?>"></i>
-                            </a>
-                        <?php endif; ?>
-                        <?php if (ThemeModel::getInstance()->fetchConfigValue('footer_active_instagram')): ?>
-                            <a href="<?= ThemeModel::getInstance()->fetchConfigValue('footer_link_instagram') ?>" <?php if (ThemeModel::getInstance()->fetchConfigValue('footer_open_link_new_tab')): ?>target="_blank"<?php endif; ?> class="head-a">
-                                <i class="fa-xl <?= ThemeModel::getInstance()->fetchConfigValue('footer_icon_instagram') ?>"></i>
-                            </a>
-                        <?php endif; ?>
-                        <?php if (ThemeModel::getInstance()->fetchConfigValue('footer_active_discord')): ?>
-                            <a href="<?= ThemeModel::getInstance()->fetchConfigValue('footer_link_discord') ?>" <?php if (ThemeModel::getInstance()->fetchConfigValue('footer_open_link_new_tab')): ?>target="_blank"<?php endif; ?> class="head-a">
-                                <i class="fa-xl <?= ThemeModel::getInstance()->fetchConfigValue('footer_icon_discord') ?>"></i>
-                            </a>
-                        <?php endif; ?>
+                        <a data-cmw-visible="footer:footer_active_facebook" data-cmw-attr="href:footer:footer_link_facebook" <?php if(ThemeModel::getInstance()->fetchConfigValue('footer','footer_open_link_new_tab')): ?>target="_blank"<?php endif; ?> class="head-a">
+                            <i data-cmw-class="footer:footer_icon_facebook" class="fa-xl"></i>
+                        </a>
+                        <a data-cmw-visible="footer:footer_active_x" data-cmw-attr="href:footer:footer_link_x" <?php if(ThemeModel::getInstance()->fetchConfigValue('footer','footer_open_link_new_tab')): ?>target="_blank"<?php endif; ?> class="head-a">
+                            <i data-cmw-class="footer:footer_icon_x" class="fa-xl"></i>
+                        </a>
+                        <a data-cmw-visible="footer:footer_active_instagram" data-cmw-attr="href:footer:footer_link_instagram" <?php if(ThemeModel::getInstance()->fetchConfigValue('footer', 'footer_open_link_new_tab')): ?>target="_blank"<?php endif; ?> class="head-a">
+                            <i data-cmw-class="footer:footer_icon_instagram" class="fa-xl"></i>
+                        </a>
+                        <a data-cmw-visible="footer:footer_active_discord" data-cmw-attr="href:footer:footer_link_discord" <?php if(ThemeModel::getInstance()->fetchConfigValue('footer','footer_open_link_new_tab')): ?>target="_blank"<?php endif; ?> class="head-a">
+                            <i data-cmw-class="footer:footer_icon_discord" class="fa-xl "></i>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -61,11 +53,10 @@ use CMW\Utils\Website;
                     </div>
                 </form>
                 <?php endif; ?>
-                <?php if (ThemeModel::getInstance()->fetchConfigValue('footer_active_condition')): ?>
-                        <a class="mt-4" href="<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>cgu"><?= ThemeModel::getInstance()->fetchConfigValue('footer_desc_condition_use') ?></a> /
-                        <a class="mt-4" href="<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>cgv"><?= ThemeModel::getInstance()->fetchConfigValue('footer_desc_condition_sale') ?></a>
-                <?php endif; ?>
-
+                <div data-cmw-visible="footer:footer_active_condition">
+                    <a class="head-a" href="<?= EnvManager::getInstance()->getValue("PATH_SUBFOLDER") ?>cgu" data-cmw="footer:footer_desc_condition_use"></a> /
+                    <a class="head-a" href="<?= EnvManager::getInstance()->getValue("PATH_SUBFOLDER") ?>cgv" data-cmw="footer:footer_desc_condition_sale"></a>
+                </div>
             </div>
         </div>
         <div class="mt-8">

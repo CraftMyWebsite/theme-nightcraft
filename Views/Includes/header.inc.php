@@ -94,11 +94,11 @@ $menus = MenusModel::getInstance();
             </div>
             <?php else: ?>
             <div class="space-x-3">
-            <?php if (ThemeModel::getInstance()->fetchConfigValue('header_allow_login_button')): ?>
+            <?php if (ThemeModel::getInstance()->fetchConfigValue('header','header_allow_login_button')): ?>
                 <a href="<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>login"
                    class="btn uppercase">Connexion</a>
             <?php endif; ?>
-                    <?php if (ThemeModel::getInstance()->fetchConfigValue('header_allow_register_button')): ?>
+                    <?php if (ThemeModel::getInstance()->fetchConfigValue('header','header_allow_register_button')): ?>
                 <a href="<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>register"
                    class="hidden md:inline btn uppercase">Inscription</a>
                     <?php endif; ?>

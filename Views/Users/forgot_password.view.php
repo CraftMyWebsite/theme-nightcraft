@@ -11,9 +11,7 @@ use CMW\Utils\Website;
 Website::setTitle('Mot de passe oublié');
 Website::setDescription("C'est pas très bien d'oublié son mot de passe ...");
 ?>
-<?php if (ThemeModel::getInstance()->fetchConfigValue('overlay_everywhere')): ?>
-    <div class="overlay"></div>
-<?php endif; ?>
+<div data-cmw-visible="global:overlay_everywhere" data-cmw-style="background-image:global:overlay_img" class="overlay"></div>
 
 <div class="mt-auto mx-auto relative w-full max-w-md h-full mb-4">
     <h4 style="background-color: var(--card-bg-color); color: var(--main-color)" class="rounded-xl p-2 text-center my-4">Mot de passe oublié</h4>

@@ -13,15 +13,13 @@ use CMW\Utils\Website;
 Website::setTitle('Votez');
 Website::setDescription("Votez, obtenez des points de vote et plein d'autres cadeaux!");
 ?>
-<?php if (ThemeModel::getInstance()->fetchConfigValue('overlay_everywhere')): ?>
-    <div class="overlay"></div>
-<?php endif; ?>
+<div data-cmw-visible="global:overlay_everywhere" data-cmw-style="background-image:global:overlay_img" class="overlay"></div>
 
 <section class="mb-8 px-8 md:px-36 2xl:px-96">
     <div class="lg:grid grid-cols-3 gap-6">
         <div style="background-color: var(--card-bg-color);" class="rounded-lg h-fit">
             <div class="page-title-divider text-center pt-1 w-full">
-                <h4 style="color: var(--main-color)"><?= ThemeModel::getInstance()->fetchConfigValue('votes_participate_title') ?></h4>
+                <h4 data-cmw="votes:votes_participate_title" style="color: var(--main-color)"></h4>
             </div>
             <div class="p-4">
                 <div class="space-y-4">
@@ -108,8 +106,7 @@ Website::setDescription("Votez, obtenez des points de vote et plein d'autres cad
             </div>
         </div>
     </div>
-    <?php if (ThemeModel::getInstance()->fetchConfigValue('votes_display_global')): ?>
-    <div style="background-color: var(--card-bg-color);" class="rounded-lg col-span-2 h-fit mt-8">
+    <div data-cmw-visible="votes:votes_display_global" style="background-color: var(--card-bg-color);" class="rounded-lg col-span-2 h-fit mt-8">
         <div class="page-title-divider text-center pt-1 w-full">
             <h4 style="color: var(--main-color)">Top <?= VotesConfigModel::getInstance()->getConfig()->getTopShow() ?> global</h4>
         </div>
@@ -168,5 +165,4 @@ Website::setDescription("Votez, obtenez des points de vote et plein d'autres cad
             </table>
         </div>
     </div>
-    <?php endif; ?>
 </section>

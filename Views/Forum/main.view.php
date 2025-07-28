@@ -13,9 +13,7 @@ use CMW\Utils\Website;
 Website::setTitle('Forum');
 Website::setDescription('Consultez les sujets de discussion et répondez aux questions posées par les membres de votre communauté.');
 ?>
-<?php if (ThemeModel::getInstance()->fetchConfigValue('overlay_everywhere')): ?>
-    <div class="overlay"></div>
-<?php endif; ?>
+<div data-cmw-visible="global:overlay_everywhere" data-cmw-style="background-image:global:overlay_img" class="overlay"></div>
 
 <section class="mb-16 px-4 md:px-36 2xl:px-72 space-y-8">
     <section class="lg:grid grid-cols-4 gap-6">
@@ -23,8 +21,7 @@ Website::setDescription('Consultez les sujets de discussion et répondez aux que
             <nav class="flex" aria-label="Breadcrumb">
                 <ol class="inline-flex items-center space-x-2">
                     <li class="">
-                        <a href="<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>forum" class="a-forum">
-                            <?= ThemeModel::getInstance()->fetchConfigValue('forum_breadcrumb_home') ?>
+                        <a data-cmw="forum:forum_breadcrumb_home" href="<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>forum" class="a-forum">
                         </a>
                     </li>
                 </ol>
@@ -46,7 +43,7 @@ Website::setDescription('Consultez les sujets de discussion et répondez aux que
     </section>
 
 
-    <section class="<?php if (ThemeModel::getInstance()->fetchConfigValue('forum_use_widgets')): ?>lg:grid <?php endif; ?> grid-cols-4 gap-6 my-8">
+    <section class="<?php if (ThemeModel::getInstance()->fetchConfigValue('forum','forum_use_widgets')): ?>lg:grid <?php endif; ?> grid-cols-4 gap-6 my-8">
         <div class="col-span-3 space-y-6">
             <?php foreach ($categoryModel->getCategories() as $category): ?>
                 <?php if ($category->isUserAllowed()): ?>
@@ -91,7 +88,7 @@ Website::setDescription('Consultez les sujets de discussion et répondez aux que
                                                 <a href="<?= $forumObj->getParent()->getLink() ?>/f/<?= $forumObj->getLastResponse()->getResponseTopic()->getForum()->getSlug() ?>/t/<?= $forumObj->getLastResponse()->getResponseTopic()->getSlug() ?>/p<?= $forumObj->getLastResponse()->getPageNumber() ?>/#<?= $forumObj->getLastResponse()?->getId() ?>">
                                                     <?php endif; ?>
                                                     <div class="ml-2">
-                                                        <div class=""><?= $forumObj->getLastResponse()?->getUser()->getPseudo() ?? ThemeModel::getInstance()->fetchConfigValue('forum_nobody_send_message_text') ?></div>
+                                                        <div class=""><?= $forumObj->getLastResponse()?->getUser()->getPseudo() ?? ThemeModel::getInstance()->fetchConfigValue('forum','forum_nobody_send_message_text') ?></div>
                                                         <div><?= $forumObj->getLastResponse()?->getCreated() ?? '' ?></div>
                                                     </div>
                                                 </a>
@@ -107,47 +104,48 @@ Website::setDescription('Consultez les sujets de discussion et répondez aux que
         </div>
 
         <!--WIDGET-->
-        <?php if (ThemeModel::getInstance()->fetchConfigValue('forum_use_widgets')): ?>
-            <section class="h-fit space-y-6">
-                <?php if (ThemeModel::getInstance()->fetchConfigValue('forum_widgets_show_stats')): ?>
-                    <div style="background: var(--card-bg-color);" class="w-full rounded-lg p-4">
+            <section data-cmw-visible="forum:forum_use_widgets" class="h-fit space-y-6">
+                    <div data-cmw-visible="forum:forum_widgets_show_stats" style="background: var(--card-bg-color);" class="w-full rounded-lg p-4">
                         <div class="flex">
-                            <h4 style="color: var(--main-color)">Stats forum</h4>
+                            <h4 data-cmw="forum:forum_widgets_title_stats" style="color: var(--main-color)"></h4>
                         </div>
                         <div class="">
-                            <?php if (ThemeModel::getInstance()->fetchConfigValue('forum_widgets_show_member')): ?>
-                                <p><?= ThemeModel::getInstance()->fetchConfigValue('forum_widgets_text_member') ?>
-                                <b><?= UsersModel::getInstance()->countUsers() ?></b></p><?php endif; ?>
-                            <?php if (ThemeModel::getInstance()->fetchConfigValue('forum_widgets_show_messages')): ?>
-                                <p><?= ThemeModel::getInstance()->fetchConfigValue('forum_widgets_text_messages') ?>
-                                <b><?= $forumModel->countAllMessagesInAllForum() ?></b></p><?php endif; ?>
-                            <?php if (ThemeModel::getInstance()->fetchConfigValue('forum_widgets_show_topics')): ?>
-                                <p><?= ThemeModel::getInstance()->fetchConfigValue('forum_widgets_text_topics') ?>
-                                <b><?= $forumModel->countAllTopicsInAllForum() ?></b></p><?php endif; ?>
+                            <div data-cmw-visible="forum:forum_widgets_show_member">
+                                <p>
+                                    <span data-cmw="forum:forum_widgets_text_member"></span>
+                                    <b><?= UsersModel::getInstance()->countUsers() ?></b>
+                                </p>
+                            </div>
+                            <div data-cmw-visible="forum:forum_widgets_show_messages">
+                                <p>
+                                    <span data-cmw="forum:forum_widgets_text_messages"></span>
+                                    <b><?= $forumModel->countAllMessagesInAllForum() ?></b>
+                                </p>
+                            </div>
+                            <div data-cmw-visible="forum:forum_widgets_show_topics">
+                                <p>
+                                    <span data-cmw="forum:forum_widgets_text_topics"></span>
+                                    <b><?= $forumModel->countAllTopicsInAllForum() ?></b>
+                                </p>
+                            </div>
                         </div>
                     </div>
-                <?php endif; ?>
 
-                <?php if (ThemeModel::getInstance()->fetchConfigValue('forum_widgets_show_discord')): ?>
-                    <div class="w-full">
+                    <div data-cmw-visible="forum:forum_widgets_show_discord" class="w-full">
                         <div class="">
                             <iframe style="width: 100%"
-                                    src="https://discord.com/widget?id=<?= ThemeModel::getInstance()->fetchConfigValue('forum_widgets_content_id') ?>&theme=dark"
+                                    src="https://discord.com/widget?id=<?= ThemeModel::getInstance()->fetchConfigValue('forum','forum_widgets_content_id') ?>&theme=dark"
                                     height="400" allowtransparency="true"
                                     sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
                         </div>
                     </div>
-                <?php endif; ?>
-                <?php if (ThemeModel::getInstance()->fetchConfigValue('forum_widgets_show_custom')): ?>
-                    <div style="background: var(--card-bg-color);" class="w-full rounded-lg p-4">
+                    <div data-cmw-visible="forum:forum_widgets_show_custom" style="background: var(--card-bg-color);" class="w-full rounded-lg p-4">
                         <div class="flex">
-                            <h4 style="color: var(--main-color)"><?= ThemeModel::getInstance()->fetchConfigValue('forum_widgets_custom_title') ?></h4>
+                            <h4 style="color: var(--main-color)" data-cmw="forum:forum_widgets_custom_title"></h4>
                         </div>
-                        <div class=""><?= ThemeModel::getInstance()->fetchConfigValue('forum_widgets_custom_text') ?></div>
+                        <div data-cmw="forum:forum_widgets_custom_text" class=""></div>
                     </div>
-                <?php endif; ?>
             </section>
-        <?php endif; ?>
 
     </section>
 

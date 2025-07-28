@@ -85,33 +85,28 @@ $siteName = Website::getWebsiteName();
     @font-face {  font-family: pressstart;  src:url("<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>Public/Themes/Nightcraft/Assets/Webfonts/PressStart2P-Regular.ttf");  }
 
     :root {
-        --main-color: <?= ThemeModel::getInstance()->fetchConfigValue('main_color') ?>;
-        --btn-hover-color: <?= ThemeModel::getInstance()->fetchConfigValue('btn_hover_color') ?>;
-        --btn-text-color: <?= ThemeModel::getInstance()->fetchConfigValue('btn_text_color') ?>;
-        --btn-text-hover-color: <?= ThemeModel::getInstance()->fetchConfigValue('btn_text_hover_color') ?>;
-        --nav-active-color: <?= ThemeModel::getInstance()->fetchConfigValue('nav_active_color') ?>;
-        --nav-hover-color: <?= ThemeModel::getInstance()->fetchConfigValue('nav_hover_color') ?>;
-        --bg-color : <?= ThemeModel::getInstance()->fetchConfigValue('bg_color') ?>;
-        --nav-bg-color : rgba(<?= ThemeModel::getInstance()->fetchConfigValue('nav_bg_color_r') ?>, <?= ThemeModel::getInstance()->fetchConfigValue('nav_bg_color_g') ?>, <?= ThemeModel::getInstance()->fetchConfigValue('nav_bg_color_b') ?>, <?= ThemeModel::getInstance()->fetchConfigValue('nav_bg_color_a') ?>);
-        --bg-img: url("<?= ThemeModel::getInstance()->fetchImageLink('overlay_img') ?>");
-        --text-color : <?= ThemeModel::getInstance()->fetchConfigValue('text_color') ?>;
-        --home-overlay-blur: <?= ThemeModel::getInstance()->fetchConfigValue('overlay_blur') ?>px;
-        --home-logo-width: <?= ThemeModel::getInstance()->fetchConfigValue('logo_width') ?>%;
-        --home-btn-bg-color: <?= ThemeModel::getInstance()->fetchConfigValue('home_btn_color') ?>;
-        --home-btn-hover-color: <?= ThemeModel::getInstance()->fetchConfigValue('home_btn_hover_color') ?>;
-        --home-btn-text-color: <?= ThemeModel::getInstance()->fetchConfigValue('home_btn_text_color') ?>;
-        --home-join-discord-width: <?= ThemeModel::getInstance()->fetchConfigValue('home_join_width') ?>%;
-        --card-bg-color : rgba(<?= ThemeModel::getInstance()->fetchConfigValue('card_color_r') ?>, <?= ThemeModel::getInstance()->fetchConfigValue('card_color_g') ?>, <?= ThemeModel::getInstance()->fetchConfigValue('card_color_b') ?>, <?= ThemeModel::getInstance()->fetchConfigValue('card_color_a') ?>);
-        --card-in-card-bg-color : rgba(<?= ThemeModel::getInstance()->fetchConfigValue('card_in_card_color_r') ?>, <?= ThemeModel::getInstance()->fetchConfigValue('card_in_card_color_g') ?>, <?= ThemeModel::getInstance()->fetchConfigValue('card_in_card_color_b') ?>, <?= ThemeModel::getInstance()->fetchConfigValue('card_in_card_color_a') ?>);
-        --footer-bg-color : <?= ThemeModel::getInstance()->fetchConfigValue('footer_bg_color') ?>;
-        --input-bg-color : <?= ThemeModel::getInstance()->fetchConfigValue('input_bg_color') ?>;
-        --input-text-color : <?= ThemeModel::getInstance()->fetchConfigValue('input_text_color') ?>;
-        --input-placeholder-text-color : <?= ThemeModel::getInstance()->fetchConfigValue('input_placeholder_color') ?>;
-        --maintenance-width: <?= ThemeModel::getInstance()->fetchConfigValue('maintenance_width') ?>%;
-        --404-width: <?= ThemeModel::getInstance()->fetchConfigValue('404_width') ?>%;
-        --link-color: <?= ThemeModel::getInstance()->fetchConfigValue('link_color') ?>;
-        --hover-link-color: <?= ThemeModel::getInstance()->fetchConfigValue('hover_link_color') ?>;
-        --forum-hover-card : <?= ThemeModel::getInstance()->fetchConfigValue('forum_hover_color') ?>;
+        --main-color: /*cmw:global:main_color*/;
+        --btn-hover-color: /*cmw:global:btn_hover_color*/;
+        --btn-text-color: /*cmw:global:btn_text_color*/;
+        --btn-text-hover-color: /*cmw:global:btn_text_hover_color*/;
+        --nav-active-color: /*cmw:global:nav_active_color*/;
+        --nav-hover-color: /*cmw:global:nav_hover_color*/;
+        --bg-color : /*cmw:global:bg_color*/;
+        --nav-bg-color : /*cmw:global:nav_bg_color*/;
+        --text-color : /*cmw:global:text_color*/;
+        --home-btn-bg-color: /*cmw:global:home_btn_color*/;
+        --home-btn-hover-color: /*cmw:global:home_btn_hover_color*/;
+        --home-btn-text-color: /*cmw:global:home_btn_text_color*/;
+        --card-bg-color : /*cmw:global:card_color*/;
+        --card-in-card-bg-color : /*cmw:global:card_color_inner*/;
+        --footer-bg-color : /*cmw:global:footer_bg_color*/;
+        --input-bg-color : /*cmw:global:input_bg_color*/;
+        --input-text-color : /*cmw:global:input_text_color*/;
+        --input-placeholder-text-color : /*cmw:global:input_placeholder_color*/;
+        --link-color: /*cmw:global:link_color*/;
+        --hover-link-color: /*cmw:global:hover_link_color*/;
+        --forum-hover-card : /*cmw:global:forum_hover_color*/;
+        --overlay-blur: <?= ThemeModel::getInstance()->fetchConfigValue('global','overlay_blur') ?>px;
     }
 
     .hover-topic-forum {
@@ -258,9 +253,8 @@ $siteName = Website::getWebsiteName();
 
     .overlay {
         position: absolute;
-        background-image: var(--bg-img);
         height: 100vh;
-        filter: blur(var(--home-overlay-blur));
+        filter: blur(var(--overlay-blur));
         top: 0;
         left: 0;
         width: 100%;
@@ -289,7 +283,7 @@ $siteName = Website::getWebsiteName();
 
 </style>
 
-<body style="background-color: var(--bg-color); color: var(--text-color)" class="dark font-<?= ThemeModel::getInstance()->fetchConfigValue('main_font') ?> flex flex-col min-h-screen">
+<body data-cmw-class="global:main_font" style="background-color: var(--bg-color); color: var(--text-color)" class="dark flex flex-col min-h-screen">
 <?php
 View::loadInclude($includes, 'beforeScript');
 echo CoreController::getInstance()->cmwWarn();

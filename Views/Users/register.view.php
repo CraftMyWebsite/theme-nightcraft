@@ -13,11 +13,9 @@ use CMW\Utils\Website;
 Website::setTitle('Inscription');
 Website::setDescription('Inscrivez-vous');
 ?>
-<?php if (ThemeModel::getInstance()->fetchConfigValue('overlay_everywhere')): ?>
-    <div class="overlay"></div>
-<?php endif; ?>
+<div data-cmw-visible="global:overlay_everywhere" data-cmw-style="background-image:global:overlay_img" class="overlay"></div>
 
-<?php if (ThemeModel::getInstance()->fetchConfigValue('header_allow_register_button')): ?>
+<?php if (ThemeModel::getInstance()->fetchConfigValue('header','header_allow_register_button')): ?>
     <div class="mt-auto mx-auto relative w-full max-w-md h-full mb-4">
         <h4 style="background-color: var(--card-bg-color); color: var(--main-color)" class="rounded-xl p-2 text-center my-4">Inscription</h4>
         <div style="background-color: var(--card-bg-color)" class="rounded-xl">
@@ -79,7 +77,7 @@ Website::setDescription('Inscrivez-vous');
 <div class="mx-auto relative p-4 w-full max-w-xl h-full md:h-auto mb-6 mt-6">
     <div class="relative bg-white rounded-lg shadow">
         <div class="py-6 px-6 lg:px-8">
-            <?= ThemeModel::getInstance()->fetchConfigValue('global_no_register_message') ?>
+            <?= ThemeModel::getInstance()->fetchConfigValue('header','global_no_register_message') ?>
         </div>
     </div>
 </div>

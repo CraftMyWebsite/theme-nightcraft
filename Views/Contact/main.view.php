@@ -8,9 +8,7 @@ use CMW\Utils\Website;
 Website::setTitle('Contactez-nous');
 Website::setDescription('Contactez-nous dès maintenant');
 ?>
-<?php if (ThemeModel::getInstance()->fetchConfigValue('overlay_everywhere')): ?>
-    <div class="overlay"></div>
-<?php endif; ?>
+<div data-cmw-visible="global:overlay_everywhere" data-cmw-style="background-image:global:overlay_img" class="overlay"></div>
 
 
 <section class="mt-auto px-8 md:px-36 2xl:px-96">

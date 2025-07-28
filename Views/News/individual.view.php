@@ -9,12 +9,10 @@ use CMW\Model\Core\ThemeModel;
 use CMW\Utils\Website;
 
 /* TITRE ET DESCRIPTION */
-Website::setTitle(ThemeModel::getInstance()->fetchConfigValue('news_title') . ' - ' . $news->getTitle());
-Website::setDescription(ThemeModel::getInstance()->fetchConfigValue('news_description'));
+Website::setTitle(ThemeModel::getInstance()->fetchConfigValue('news', 'news_page_title') . ' - ' . $news->getTitle());
+Website::setDescription($news->getDescription());
 ?>
-<?php if (ThemeModel::getInstance()->fetchConfigValue('overlay_everywhere')): ?>
-    <div class="overlay"></div>
-<?php endif; ?>
+<div data-cmw-visible="global:overlay_everywhere" data-cmw-style="background-image:global:overlay_img" class="overlay"></div>
 
 <section class="mb-8 px-8 md:px-36 2xl:px-96">
         <div style="background: var(--card-bg-color);" class="flex flex-col rounded-lg">

@@ -12,9 +12,7 @@ use CMW\Utils\Website;
 Website::setTitle('Forum');
 Website::setDescription('Éditez un topic');
 ?>
-<?php if (ThemeModel::getInstance()->fetchConfigValue('overlay_everywhere')): ?>
-    <div class="overlay"></div>
-<?php endif; ?>
+<div data-cmw-visible="global:overlay_everywhere" data-cmw-style="background-image:global:overlay_img" class="overlay"></div>
 
 <section class="mb-16 px-4 md:px-36 2xl:px-72 space-y-8">
     <section class=" gap-6">
@@ -23,7 +21,7 @@ Website::setDescription('Éditez un topic');
                 <ol class="inline-flex items-center space-x-2">
                     <li class="">
                         <a href="<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>forum" class="a-forum">
-                            <?= ThemeModel::getInstance()->fetchConfigValue('forum_breadcrumb_home') ?>
+                            <?= ThemeModel::getInstance()->fetchConfigValue('forum','forum_breadcrumb_home') ?>
                         </a>
                     </li>
                     <li>

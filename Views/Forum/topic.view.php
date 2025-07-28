@@ -28,9 +28,7 @@ Website::setTitle('Forum');
 Website::setDescription('Lisez les sujets et les réponses de la communauté');
 $i = 0;
 ?>
-<?php if (ThemeModel::getInstance()->fetchConfigValue('overlay_everywhere')): ?>
-    <div class="overlay"></div>
-<?php endif; ?>
+<div data-cmw-visible="global:overlay_everywhere" data-cmw-style="background-image:global:overlay_img" class="overlay"></div>
 
 <section class="mb-16 px-4 md:px-36 2xl:px-72 space-y-8">
     <section class="lg:grid grid-cols-4 gap-6">
@@ -39,7 +37,7 @@ $i = 0;
                 <ol class="inline-flex items-center space-x-2">
                     <li class="">
                         <a href="<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>forum" class="a-forum">
-                            <?= ThemeModel::getInstance()->fetchConfigValue('forum_breadcrumb_home') ?>
+                            <?= ThemeModel::getInstance()->fetchConfigValue('forum','forum_breadcrumb_home') ?>
                         </a>
                     </li>
                     <li>
@@ -149,7 +147,7 @@ $i = 0;
                 <?php else: ?>
                     <p><small>Tags :</small>
                         <?php foreach ($topic->getTags() as $tag): ?>
-                            <small><span class="px-1 bg-gray-200 rounded mr-1"><?= $tag->getContent() ?></span></small>
+                            <small><span style="background-color: var(--main-color)" class="px-1 rounded mr-1"><?= $tag->getContent() ?></span></small>
                         <?php endforeach; ?>
                     </p>
                 <?php endif; ?>
