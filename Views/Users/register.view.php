@@ -27,16 +27,15 @@ Website::setDescription('Inscrivez-vous');
                             <input id="register_email" name="register_email" type="email" class="input border border-gray-300 text-sm rounded-lg block w-full p-2.5" placeholder="mail@craftmywebsite.fr" required>
                         </div>
                         <div>
+                            <label for="register_pseudo" class="block mb-2 text-sm font-medium">Pseudo minecraft</label>
+                            <input id="register_pseudo" name="register_pseudo" type="text" class="input  border border-gray-300  text-sm rounded-lg block w-full p-2.5" placeholder="Pseudo" required>
+                        </div>
+                        <div>
                             <label for="passwordInput" class="block mb-2 text-sm font-medium">Mot de passe</label>
                             <div class="flex">
                                 <input id="passwordInput" type="password" name="register_password" placeholder="••••••••" class="input block  border border-gray-300 text-sm rounded-l-lg w-full p-2.5" required>
                                 <div onclick="showPassword()" style="background-color: var(--main-color);" class="cursor-pointer p-2.5 text-sm font-medium rounded-r-lg"><i class="fa fa-eye-slash"></i></div>
                             </div>
-                        </div>
-
-                        <div>
-                            <label for="register_pseudo" class="block mb-2 text-sm font-medium">Pseudo minecraft</label>
-                            <input id="register_pseudo" name="register_pseudo" type="text" class="input  border border-gray-300  text-sm rounded-lg block w-full p-2.5" placeholder="Pseudo" required>
                         </div>
                         <div>
                             <label for="passwordInputV" class="block mb-2 text-sm font-medium">Confirmation</label>
