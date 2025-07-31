@@ -2,6 +2,8 @@
 
 use CMW\Controller\Core\PackageController;
 use CMW\Controller\Minecraft\MinecraftController;
+use CMW\Controller\Shop\Admin\Item\ShopItemsController;
+use CMW\Controller\Shop\Admin\Payment\ShopPaymentsController;
 use CMW\Controller\Users\UsersController;
 use CMW\Controller\Users\UsersSessionsController;
 use CMW\Manager\Env\EnvManager;
@@ -75,6 +77,13 @@ $menus = MenusModel::getInstance();
                                 Commandes</a>
                         </div>
                     <?php endif; ?>
+                        <?php if (PackageController::isInstalled('ShopExtendedToken')): ?>
+                            <div>
+                                <a href="<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>shop/tokens"
+                                   class="block py-2 px-4 "><?= ShopPaymentsController::getInstance()->getPaymentByVarName('extendedToken')->faIcon() ?>
+                                    <?= ShopItemsController::getInstance()->getPriceTypeMethodsByVarName('extendedToken')->name() ?></a>
+                            </div>
+                        <?php endif; ?>
                     </div>
                     <div class="py-1">
                         <a href="<?= EnvManager::getInstance()->getValue('PATH_SUBFOLDER') ?>logout"
