@@ -1,14 +1,14 @@
 <?php
 
 use CMW\Controller\Core\SecurityController;
-use CMW\Manager\Env\EnvManager;
-use CMW\Manager\Lang\LangManager;
+use CMW\Interface\Users\IUsersOAuth;
 use CMW\Manager\Security\SecurityManager;
 use CMW\Model\Core\ThemeModel;
-use CMW\Utils\Utils;
 use CMW\Utils\Website;
 
-/* @var \CMW\Interface\Users\IUsersOAuth[] $oAuths */
+/* @var IUsersOAuth[] $oAuths */
+/* @var string $needTextTerms */
+/* @var bool $needTerms */
 
 Website::setTitle('Inscription');
 Website::setDescription('Inscrivez-vous');
@@ -45,7 +45,17 @@ Website::setDescription('Inscrivez-vous');
                             </div>
                         </div>
 
-
+                <?php if ($needTerms): ?>
+                    <div style="display:flex; justify-content: space-between; margin-top: 10px">
+                        <div style="display: flex; align-items: center">
+                            <div class="flex items-center h-5">
+                                <input id="acceptTerms" name="acceptTerms" type="checkbox" value=""
+                                       class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-600 dark:border-gray-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800">
+                            </div>
+                            <label for="acceptTerms" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"><?= $needTextTerms ?></label>
+                        </div>
+                    </div>
+                <?php endif; ?>
                 <div class="flex justify-center">
                     <?php SecurityController::getPublicData(); ?>
                 </div>
