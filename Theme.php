@@ -2,9 +2,9 @@
 
 namespace CMW\Theme\Nightcraft;
 
-use CMW\Manager\Theme\IThemeConfig;
+use CMW\Manager\Theme\IThemeConfigV2;
 
-class Theme implements IThemeConfig
+class Theme implements IThemeConfigV2
 {
     public function name(): string
     {
@@ -13,22 +13,17 @@ class Theme implements IThemeConfig
 
     public function version(): string
     {
-        return '0.0.5';
+        return '0.0.6';
     }
 
     public function cmwVersion(): string
     {
-        return 'alpha-09';
-    }
-
-    public function author(): ?string
-    {
-        return 'Zomb';
+        return 'beta-01';
     }
 
     public function authors(): array
     {
-        return [];
+        return ['Zomb'];
     }
 
     public function compatiblesPackages(): array
@@ -36,14 +31,7 @@ class Theme implements IThemeConfig
         return [
             'Core',
             'Pages',
-            'Users',
-            'Faq',
-            'News',
-            'Votes',
-            'Wiki',
-            'Forum',
-            'Contact',
-            'Shop',
+            'Users'
         ];
     }
 
